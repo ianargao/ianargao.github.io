@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hello, World! | Ian Argao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .lnav .wrap{max-width:1100px;padding:0 20px}
+    .back{font-size:14px;color:var(--tx);border:1px solid var(--line);border-radius:999px;padding:8px 18px;transition:.2s}
+    .back:hover{border-color:#777}
+    main{max-width:900px;margin:0 auto;padding:40px 20px 80px}
+                    .kind{display:inline-block;font-size:12px;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 12px;margin-bottom:14px}
+    h1.t{font-size:clamp(34px,6vw,56px);margin-bottom:10px}
+    .intro{color:var(--mut);max-width:620px;margin-bottom:36px}
+    .step{display:grid;grid-template-columns:44px 1fr;gap:16px;margin-bottom:30px}
+    .num{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:"Space Grotesk",Inter,sans-serif}
+    .step h3{font-size:20px;margin:6px 0 6px}
+    .step p{color:var(--mut);font-size:15px;margin-bottom:12px}
+    .code{background:#07070a;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:6px}
+    .code .bar{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line);font-size:12px;color:var(--mut)}
+    .code button{background:none;border:1px solid var(--line);color:var(--tx);border-radius:999px;padding:3px 12px;font-size:12px;cursor:pointer;transition:.2s}
+    .code button:hover{border-color:#777}
+    .code pre{padding:16px;overflow-x:auto;font:14px/1.6 ui-monospace,Consolas,Menlo,monospace;color:#e8e8e8}
+    .out{border:1px solid var(--line);border-left:3px solid #7c5cff;border-radius:12px;background:var(--card);padding:16px 18px;margin-top:10px}
+    .out b{display:block;font-size:12px;color:var(--mut);font-weight:500;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+    .out pre{font:14px/1.6 ui-monospace,Consolas,Menlo,monospace;white-space:pre-wrap}
+            .pick{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;transition:transform .25s,border-color .25s}
+                          
+    .lang{display:none}.lang.on{display:block}
+  </style>
+</head>
+<body>
+<nav class="lnav">
+  <div class="wrap">
+    <a class="logo" href="index.html">IAN<span>/</span>ARGAO</a>
+    <a class="back" href="index.html#skills">&larr; Back to portfolio</a>
+  </div>
+</nav>
+<main>
+<article class="lang" id="python">
+  <span class="kind">Programming language</span>
+  <h1 class="t">Hello, World! in Python</h1>
+  <p class="intro">Python is simple to read and great for beginners. Here is how to run your first program.</p>
+    <div class="step"><div class="num">1</div><div><h3>Install Python</h3><p>Download it from python.org. In the installer, tick “Add Python to PATH”, then click Install. Check that it works:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>python --version</code></pre></div></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Create hello.py</h3><p>Make a new file named hello.py (you can use VS Code or Notepad) and type:</p><div class="code"><div class="bar"><span>hello.py</span><button type="button">Copy</button></div><pre><code>print("Hello, World!")</code></pre></div></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Run it</h3><p>Open a terminal in the same folder (in VS Code press Ctrl + `) and run:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>python hello.py</code></pre></div></div></div>
+    <div class="step"><div class="num">•</div><div><p>If “python” is not recognized, try this instead:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>py hello.py</code></pre></div></div></div>
+  <div class="out"><b>Expected result</b><pre>Hello, World!</pre></div>
+</article>
+<article class="lang" id="javascript">
+  <span class="kind">Programming language</span>
+  <h1 class="t">Hello, World! in JavaScript</h1>
+  <p class="intro">JavaScript runs in every web browser, and also on your computer through Node.js. Pick whichever you like.</p>
+    <div class="step"><div class="num">1</div><div><h3>Option A: in the browser</h3><p>Create hello.html and put this inside:</p><div class="code"><div class="bar"><span>hello.html</span><button type="button">Copy</button></div><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;script&gt;
+    console.log("Hello, World!");
+    alert("Hello, World!");
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div>
+    <div class="step"><div class="num">•</div><div><p>Open the file in your browser. A popup appears. Press F12 and open the Console tab to see the console.log message.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Option B: with Node.js</h3><p>Install Node.js from nodejs.org, then create hello.js:</p><div class="code"><div class="bar"><span>hello.js</span><button type="button">Copy</button></div><pre><code>console.log("Hello, World!");</code></pre></div></div></div>
+    <div class="step"><div class="num">•</div><div><p>Run it from the terminal:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>node hello.js</code></pre></div></div></div>
+  <div class="out"><b>Expected result</b><pre>Hello, World!</pre></div>
+</article>
+<article class="lang" id="html">
+  <span class="kind">Markup language</span>
+  <h1 class="t">Hello, World! in HTML</h1>
+  <p class="intro">HTML is the structure of every web page. You do not need to install anything. Just a text editor and a browser.</p>
+    <div class="step"><div class="num">1</div><div><h3>Create hello.html</h3><p>Make a new file named hello.html and type:</p><div class="code"><div class="bar"><span>hello.html</span><button type="button">Copy</button></div><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Open it</h3><p>Double-click the file and it opens in your browser. With VS Code you can install the “Live Server” extension, right-click the file and choose “Open with Live Server” so the page refreshes every time you save.</p></div></div>
+  <div class="out"><b>Expected result</b><pre>A web page with a big heading that says: Hello, World!</pre></div>
+</article>
+<article class="lang" id="css">
+  <span class="kind">Styling language</span>
+  <h1 class="t">Hello, World! in CSS</h1>
+  <p class="intro">CSS makes HTML look good: colors, fonts and layout. You write it in a separate file and link it to your page.</p>
+    <div class="step"><div class="num">1</div><div><h3>Create index.html</h3><p>This page links to a CSS file called style.css:</p><div class="code"><div class="bar"><span>index.html</span><button type="button">Copy</button></div><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Create style.css</h3><p>Put it in the same folder:</p><div class="code"><div class="bar"><span>style.css</span><button type="button">Copy</button></div><pre><code>body {
+  background: #111;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  color: #ff6b6b;
+  font-family: Arial, sans-serif;
+  font-size: 64px;
+}</code></pre></div></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Open index.html</h3><p>Open it in your browser (or Live Server) and change the colors to see what happens.</p></div></div>
+  <div class="out"><b>Expected result</b><pre>A dark page with a big red “Hello, World!” in the center.</pre></div>
+</article>
+<article class="lang" id="sql">
+  <span class="kind">Database language</span>
+  <h1 class="t">Hello, World! in SQL</h1>
+  <p class="intro">SQL is used to talk to databases. The easiest way to start is MySQL Workbench or XAMPP with phpMyAdmin.</p>
+    <div class="step"><div class="num">1</div><div><h3>Install MySQL</h3><p>Install MySQL (with MySQL Workbench) from mysql.com, or install XAMPP and start MySQL from its control panel.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Open a query window</h3><p>In MySQL Workbench, open a connection and click a new SQL tab. Or in the terminal:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>mysql -u root -p</code></pre></div></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Run your first query</h3><p>Type this and run it (Ctrl + Enter in Workbench):</p><div class="code"><div class="bar"><span>SQL</span><button type="button">Copy</button></div><pre><code>SELECT 'Hello, World!' AS message;</code></pre></div></div></div>
+    <div class="step"><div class="num">4</div><div><h3>Try it with a real table</h3><p>Create a database, a table, add a row and read it back:</p><div class="code"><div class="bar"><span>SQL</span><button type="button">Copy</button></div><pre><code>CREATE DATABASE hello_db;
+USE hello_db;
+
+CREATE TABLE greetings (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  message VARCHAR(50)
+);
+
+INSERT INTO greetings (message) VALUES ('Hello, World!');
+
+SELECT * FROM greetings;</code></pre></div></div></div>
+  <div class="out"><b>Expected result</b><pre>+---------------+
+| message       |
++---------------+
+| Hello, World! |
++---------------+</pre></div>
+</article>
+<article class="lang" id="java">
+  <span class="kind">Programming language</span>
+  <h1 class="t">Hello, World! in Java</h1>
+  <p class="intro">Java programs are compiled first, then run. You need the JDK (Java Development Kit).</p>
+    <div class="step"><div class="num">1</div><div><h3>Install the JDK</h3><p>Download a JDK (for example Temurin from adoptium.net) and install it. Then check:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>java -version
+javac -version</code></pre></div></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Create Hello.java</h3><p>The class name must be the same as the file name (Hello):</p><div class="code"><div class="bar"><span>Hello.java</span><button type="button">Copy</button></div><pre><code>public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre></div></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Compile and run</h3><p>In the terminal, in the same folder:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>javac Hello.java
+java Hello</code></pre></div></div></div>
+  <div class="out"><b>Expected result</b><pre>Hello, World!</pre></div>
+</article>
+<article class="lang" id="cpp">
+  <span class="kind">Programming language</span>
+  <h1 class="t">Hello, World! in C++</h1>
+  <p class="intro">C++ is compiled into an .exe file. You need a compiler such as g++ (MinGW-w64 / MSYS2) or Visual Studio.</p>
+    <div class="step"><div class="num">1</div><div><h3>Install a compiler</h3><p>On Windows, install MSYS2 (msys2.org) and then g++, or use Visual Studio with the “Desktop development with C++” workload. Check:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>g++ --version</code></pre></div></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Create hello.cpp</h3><div class="code"><div class="bar"><span>hello.cpp</span><button type="button">Copy</button></div><pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+    return 0;
+}</code></pre></div></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Compile and run</h3><p>Compile to hello.exe, then run it:</p><div class="code"><div class="bar"><span>Terminal (Windows)</span><button type="button">Copy</button></div><pre><code>g++ hello.cpp -o hello
+.\hello.exe</code></pre></div></div></div>
+    <div class="step"><div class="num">•</div><div><p>On Mac or Linux, run it like this instead:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>./hello</code></pre></div></div></div>
+  <div class="out"><b>Expected result</b><pre>Hello, World!</pre></div>
+</article>
+<article class="lang" id="flask">
+  <span class="kind">Python web framework</span>
+  <h1 class="t">Hello, World! in Flask</h1>
+  <p class="intro">Flask lets you build websites with Python. Your “Hello, World!” will show up in the browser.</p>
+    <div class="step"><div class="num">1</div><div><h3>Install Flask</h3><p>Make sure Python is installed, then run:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>pip install flask</code></pre></div></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Create app.py</h3><div class="code"><div class="bar"><span>app.py</span><button type="button">Copy</button></div><pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello, World!"
+
+if __name__ == "__main__":
+    app.run(debug=True)</code></pre></div></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Run the server</h3><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>python app.py</code></pre></div></div></div>
+    <div class="step"><div class="num">4</div><div><h3>Open it in your browser</h3><p>Go to this address:</p><div class="code"><div class="bar"><span>Browser</span><button type="button">Copy</button></div><pre><code>http://127.0.0.1:5000</code></pre></div></div></div>
+  <div class="out"><b>Expected result</b><pre>Browser page: Hello, World!
+Terminal: Running on http://127.0.0.1:5000</pre></div>
+</article>
+<article class="lang" id="git">
+  <span class="kind">Version control</span>
+  <h1 class="t">Hello, World! in Git</h1>
+  <p class="intro">Git saves the history of your code, so you can go back to any version. Your “Hello, World!” is your first commit.</p>
+    <div class="step"><div class="num">1</div><div><h3>Install Git</h3><p>Download it from git-scm.com and install. Check:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>git --version</code></pre></div></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Tell Git who you are (one time only)</h3><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@email.com"</code></pre></div></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Make your first commit</h3><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>mkdir hello-git
+cd hello-git
+git init
+echo "Hello, World!" &gt; hello.txt
+git add hello.txt
+git commit -m "My first commit"</code></pre></div></div></div>
+    <div class="step"><div class="num">4</div><div><h3>See your history</h3><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>git log --oneline</code></pre></div></div></div>
+  <div class="out"><b>Expected result</b><pre>a1b2c3d My first commit</pre></div>
+</article>
+<article class="lang" id="github">
+  <span class="kind">Code hosting</span>
+  <h1 class="t">Hello, World! in GitHub</h1>
+  <p class="intro">GitHub keeps your Git projects online. It can also host your portfolio for free with GitHub Pages.</p>
+    <div class="step"><div class="num">1</div><div><h3>Create an account and a repository</h3><p>Sign up at github.com, click New repository, and name it hello-world. Do not add a README yet.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Push your project</h3><p>In your project folder (after your first commit), replace YOUR-USERNAME and run:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/hello-world.git
+git push -u origin main</code></pre></div></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Check it online</h3><p>Refresh your repository page. Your files are now on GitHub.</p></div></div>
+    <div class="step"><div class="num">4</div><div><h3>Bonus: host a website</h3><p>Go to Settings → Pages, choose the main branch, and Save. Your index.html goes live at https://YOUR-USERNAME.github.io/hello-world/</p></div></div>
+  <div class="out"><b>Expected result</b><pre>Your hello.txt file appears in the repository on github.com.</pre></div>
+</article>
+<article class="lang" id="vscode">
+  <span class="kind">Code editor</span>
+  <h1 class="t">Hello, World! in VS Code</h1>
+  <p class="intro">VS Code is where you write and run your code. Here is how to run Hello World without leaving the editor.</p>
+    <div class="step"><div class="num">1</div><div><h3>Install VS Code</h3><p>Download it from code.visualstudio.com and install.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Open a folder</h3><p>Go to File → Open Folder and choose (or create) a folder for your project. Then click the New File icon and name it hello.py.</p></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Write the code</h3><div class="code"><div class="bar"><span>hello.py</span><button type="button">Copy</button></div><pre><code>print("Hello, World!")</code></pre></div></div></div>
+    <div class="step"><div class="num">4</div><div><h3>Run it</h3><p>Install the “Python” extension (Extensions icon on the left). Then click the ▶ Run button at the top right. Or open the terminal with Ctrl + ` and run:</p><div class="code"><div class="bar"><span>Terminal</span><button type="button">Copy</button></div><pre><code>python hello.py</code></pre></div></div></div>
+    <div class="step"><div class="num">5</div><div><h3>Helpful extensions</h3><p>Python, Live Server (for HTML), and Prettier (auto-format your code).</p></div></div>
+  <div class="out"><b>Expected result</b><pre>Hello, World! (shown in the Terminal panel at the bottom)</pre></div>
+</article>
+<article class="lang" id="figma">
+  <span class="kind">Design tool</span>
+  <h1 class="t">Hello, World! in Figma</h1>
+  <p class="intro">Figma is for designing websites and apps before you code them. There is no code here, but you can still make your own Hello, World!</p>
+    <div class="step"><div class="num">1</div><div><h3>Create an account</h3><p>Sign up for free at figma.com and click New design file.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Make a frame</h3><p>Press F, then choose a size on the right (for example Desktop). A frame is like your web page.</p></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Add text</h3><p>Press T, click inside the frame, and type Hello, World!. Change the font and size on the right.</p></div></div>
+    <div class="step"><div class="num">4</div><div><h3>Preview it</h3><p>Click the ▶ Present button at the top right to see your design full screen.</p></div></div>
+  <div class="out"><b>Expected result</b><pre>A frame with the text: Hello, World!</pre></div>
+</article>
+</main>
+<script>
+var NAMES={"python":"Python","javascript":"JavaScript","html":"HTML","css":"CSS","sql":"SQL","java":"Java","cpp":"C++","flask":"Flask","git":"Git","github":"GitHub","vscode":"VS Code","figma":"Figma"};
+function show(){
+  var id=location.hash.slice(1).toLowerCase();
+  if(!NAMES[id])id="python";
+  document.querySelectorAll(".lang").forEach(function(a){a.classList.toggle("on",a.id===id)});
+  document.title="Hello, World! in "+NAMES[id]+" | Ian Argao";
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",show);
+show();
+document.querySelectorAll(".code").forEach(function(box){
+  var btn=box.querySelector("button"),code=box.querySelector("code").textContent;
+  btn.addEventListener("click",function(){
+    var done=function(){btn.textContent="Copied!";setTimeout(function(){btn.textContent="Copy"},1400)};
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(code).then(done,done);else done();
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Project | Ian Argao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .lnav .wrap{max-width:1100px;padding:0 20px}
+    .back{font-size:14px;color:var(--tx);border:1px solid var(--line);border-radius:999px;padding:8px 18px;transition:.2s}
+    .back:hover{border-color:#777}
+    main{max-width:900px;margin:0 auto;padding:40px 20px 80px}
+                    .kind{display:inline-block;font-size:12px;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 12px;margin-bottom:14px}
+    h1.t{font-size:clamp(34px,6vw,56px);margin-bottom:10px}
+    .intro{color:var(--mut);max-width:620px;margin-bottom:36px}
+    .step{display:grid;grid-template-columns:44px 1fr;gap:16px;margin-bottom:30px}
+    .num{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:"Space Grotesk",Inter,sans-serif}
+    .step h3{font-size:20px;margin:6px 0 6px}
+    .step p{color:var(--mut);font-size:15px;margin-bottom:12px}
+    .code{background:#07070a;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:6px}
+    .code .bar{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line);font-size:12px;color:var(--mut)}
+    .code button{background:none;border:1px solid var(--line);color:var(--tx);border-radius:999px;padding:3px 12px;font-size:12px;cursor:pointer;transition:.2s}
+    .code button:hover{border-color:#777}
+    .code pre{padding:16px;overflow-x:auto;font:14px/1.6 ui-monospace,Consolas,Menlo,monospace;color:#e8e8e8}
+    .out{border:1px solid var(--line);border-left:3px solid #7c5cff;border-radius:12px;background:var(--card);padding:16px 18px;margin-top:10px}
+    .out b{display:block;font-size:12px;color:var(--mut);font-weight:500;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+    .out pre{font:14px/1.6 ui-monospace,Consolas,Menlo,monospace;white-space:pre-wrap}
+            .pick{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;transition:transform .25s,border-color .25s}
+  
+    .lang{display:none}.lang.on{display:block}
+    .sec{font-size:22px;margin:38px 0 16px}
+    .feats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+    .feat b{display:block;font:500 17px/1.2 "Space Grotesk",Inter,sans-serif;margin-bottom:6px}
+    .feat span{color:var(--mut);font-size:14px}
+    .techs .tag{margin:0 8px 8px 0;font-size:13px;padding:4px 14px}
+    .st{color:var(--tx)!important;font-size:16px!important;margin:10px 0 0!important}
+    .gh{margin-top:36px}
+    @media(max-width:560px){.feats{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="lnav">
+  <div class="wrap">
+    <a class="logo" href="index.html">IAN<span>/</span>ARGAO</a>
+    <a class="back" href="index.html#projects">&larr; Back to portfolio</a>
+  </div>
+</nav>
+<main>
+<article class="lang" id="gym">
+  <span class="kind">Web app</span>
+  <h1 class="t">Gym Membership System</h1>
+  <p class="intro">A web system for running a gym. It keeps members, membership plans, payments and daily check-ins in one place.</p>
+  <h2 class="sec">Key features</h2>
+  <div class="feats"><div class="feat"><b>Member records</b><span>Add, edit and search members.</span></div><div class="feat"><b>Membership plans</b><span>Set up plans and track who is active.</span></div><div class="feat"><b>Payments</b><span>Record payments and see who has paid.</span></div><div class="feat"><b>Check-ins</b><span>Log every gym visit.</span></div></div>
+  <h2 class="sec">Tech used</h2>
+  <div class="techs"><span class="tag">Flask</span><span class="tag">SQL</span><span class="tag">HTML/CSS/JS</span></div>
+  <h2 class="sec">How it works</h2>
+  <div class="step"><div class="num">1</div><div><p class="st">The admin adds a member and picks a plan.</p></div></div><div class="step"><div class="num">2</div><div><p class="st">The member pays and the system records the payment.</p></div></div><div class="step"><div class="num">3</div><div><p class="st">At the gym, the member's visit is logged as a check-in.</p></div></div><div class="step"><div class="num">4</div><div><p class="st">The admin reviews members, payments and visits any time.</p></div></div>
+  
+</article>
+<article class="lang" id="love">
+  <span class="kind">Web app</span>
+  <h1 class="t">Love Website</h1>
+  <p class="intro">A private website for sharing photos, messages and special moments together. Only an admin account can upload.</p>
+  <h2 class="sec">Key features</h2>
+  <div class="feats"><div class="feat"><b>Private access</b><span>Login so only the right people can see it.</span></div><div class="feat"><b>Admin uploads</b><span>The admin account uploads photos.</span></div><div class="feat"><b>Messages</b><span>Send and read sweet messages.</span></div><div class="feat"><b>Shared pictures</b><span>View all shared photos in one gallery.</span></div></div>
+  <h2 class="sec">Tech used</h2>
+  <div class="techs"><span class="tag">Flask</span><span class="tag">SQL</span><span class="tag">HTML/CSS</span></div>
+  <h2 class="sec">How it works</h2>
+  <div class="step"><div class="num">1</div><div><p class="st">The admin logs in with the admin account.</p></div></div><div class="step"><div class="num">2</div><div><p class="st">Photos are uploaded and saved to the gallery.</p></div></div><div class="step"><div class="num">3</div><div><p class="st">Messages are written and stored.</p></div></div><div class="step"><div class="num">4</div><div><p class="st">Everyone with access can view the shared pictures and messages.</p></div></div>
+  
+</article>
+<article class="lang" id="attendance">
+  <span class="kind">Web app</span>
+  <h1 class="t">Smart Attendance and ID Verification</h1>
+  <p class="intro">Verifies student IDs and records attendance automatically, so nobody has to write names on paper anymore.</p>
+  <h2 class="sec">Key features</h2>
+  <div class="feats"><div class="feat"><b>ID verification</b><span>Checks the student ID before recording.</span></div><div class="feat"><b>Automatic attendance</b><span>Attendance is saved the moment an ID is verified.</span></div><div class="feat"><b>Records</b><span>Look up attendance by student and date.</span></div><div class="feat"><b>Fast checks</b><span>JavaScript keeps the check quick on the page.</span></div></div>
+  <h2 class="sec">Tech used</h2>
+  <div class="techs"><span class="tag">Flask</span><span class="tag">SQL</span><span class="tag">JavaScript</span></div>
+  <h2 class="sec">How it works</h2>
+  <div class="step"><div class="num">1</div><div><p class="st">A student shows or enters their ID.</p></div></div><div class="step"><div class="num">2</div><div><p class="st">The system verifies the ID against the database.</p></div></div><div class="step"><div class="num">3</div><div><p class="st">If it is valid, attendance is recorded with the date and time.</p></div></div><div class="step"><div class="num">4</div><div><p class="st">Teachers or admins view the attendance records.</p></div></div>
+  
+</article>
+<article class="lang" id="docs">
+  <span class="kind">AI tool</span>
+  <h1 class="t">AI School Document Organizer</h1>
+  <p class="intro">Sorts and organizes school documents with AI assistance, so files are easy to find when you need them.</p>
+  <h2 class="sec">Key features</h2>
+  <div class="feats"><div class="feat"><b>AI sorting</b><span>Groups documents by type or subject.</span></div><div class="feat"><b>Organized files</b><span>Keeps everything in a clean structure.</span></div><div class="feat"><b>Easy to find</b><span>No more digging through messy folders.</span></div><div class="feat"><b>Web interface</b><span>Upload and manage files from the browser.</span></div></div>
+  <h2 class="sec">Tech used</h2>
+  <div class="techs"><span class="tag">Python</span><span class="tag">AI</span><span class="tag">Flask</span></div>
+  <h2 class="sec">How it works</h2>
+  <div class="step"><div class="num">1</div><div><p class="st">Upload your school documents.</p></div></div><div class="step"><div class="num">2</div><div><p class="st">The AI reads each document and decides what it is about.</p></div></div><div class="step"><div class="num">3</div><div><p class="st">Documents are sorted and organized automatically.</p></div></div><div class="step"><div class="num">4</div><div><p class="st">Browse or search the organized files.</p></div></div>
+  
+</article>
+<article class="lang" id="dtr">
+  <span class="kind">Web app</span>
+  <h1 class="t">OJT DTR Monitoring System</h1>
+  <p class="intro">A system for a college or university to manage the daily time record and monitoring of OJT students. It starts completely empty, with no sample data.</p>
+  <h2 class="sec">Key features</h2>
+  <div class="feats"><div class="feat"><b>Attendance and DTR</b><span>Students log their daily time records.</span></div><div class="feat"><b>Digital signatures</b><span>Supervisors sign records digitally.</span></div><div class="feat"><b>Hours tracking</b><span>Tracks completed OJT hours and completion.</span></div><div class="feat"><b>Activities and documents</b><span>Students submit activities and files.</span></div><div class="feat"><b>Correction requests</b><span>Request fixes to a record.</span></div><div class="feat"><b>Reports</b><span>Reports for the coordinator and admin.</span></div></div>
+  <h2 class="sec">Tech used</h2>
+  <div class="techs"><span class="tag">Flask</span><span class="tag">SQL</span><span class="tag">JavaScript</span></div>
+  <h2 class="sec">How it works</h2>
+  <div class="step"><div class="num">1</div><div><p class="st">The OJT student logs attendance and activities every day.</p></div></div><div class="step"><div class="num">2</div><div><p class="st">The OJT supervisor reviews and digitally signs the records.</p></div></div><div class="step"><div class="num">3</div><div><p class="st">Students can send correction requests if something is wrong.</p></div></div><div class="step"><div class="num">4</div><div><p class="st">The OJT coordinator or administrator monitors hours, reports and completion.</p></div></div>
+  
+</article>
+<article class="lang" id="autodeck">
+  <span class="kind">AI tool</span>
+  <h1 class="t">AutoDeck AI PowerPoint Generator</h1>
+  <p class="intro">Turns pasted text or an uploaded document into a themed, AI-summarized PowerPoint presentation.</p>
+  <h2 class="sec">Key features</h2>
+  <div class="feats"><div class="feat"><b>Paste or upload</b><span>Paste text or upload a PDF, DOCX or TXT file.</span></div><div class="feat"><b>AI summary</b><span>AI turns the content into clear slides.</span></div><div class="feat"><b>Themes and slide count</b><span>Choose how many slides and which theme.</span></div><div class="feat"><b>Preview and edit</b><span>Check and edit before downloading the .pptx.</span></div></div>
+  <h2 class="sec">Tech used</h2>
+  <div class="techs"><span class="tag">Flask</span><span class="tag">Python</span><span class="tag">AI</span><span class="tag">python-pptx</span></div>
+  <h2 class="sec">How it works</h2>
+  <div class="step"><div class="num">1</div><div><p class="st">Paste your text or upload a PDF, DOCX or TXT file.</p></div></div><div class="step"><div class="num">2</div><div><p class="st">Pick the number of slides and a theme.</p></div></div><div class="step"><div class="num">3</div><div><p class="st">The AI summarizes the content into slides.</p></div></div><div class="step"><div class="num">4</div><div><p class="st">Preview, edit if needed, then download the .pptx file.</p></div></div>
+  <p class="gh"><a class="btn solid" href="https://github.com/johnmichaelargao006-ctrl/autodeck" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
+</article>
+</main>
+<script>
+var NAMES={"gym":"Gym Membership System","love":"Love Website","attendance":"Smart Attendance and ID Verification","docs":"AI School Document Organizer","dtr":"OJT DTR Monitoring System","autodeck":"AutoDeck AI PowerPoint Generator"};
+function show(){
+  var id=location.hash.slice(1).toLowerCase();
+  if(!NAMES[id])id="gym";
+  document.querySelectorAll(".lang").forEach(function(a){a.classList.toggle("on",a.id===id)});
+  document.title=NAMES[id]+" | Ian Argao";
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",show);
+show();
+</script>
+</body>
+</html>

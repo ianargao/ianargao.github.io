@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hello, World! Guide | Ian Argao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .lnav .wrap{max-width:1100px;padding:0 20px}
+    .back{font-size:14px;color:var(--tx);border:1px solid var(--line);border-radius:999px;padding:8px 18px;transition:.2s}
+    .back:hover{border-color:#777}
+    main{max-width:900px;margin:0 auto;padding:40px 20px 80px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+    .chips a{font-size:13px;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:6px 14px;transition:.2s}
+    .chips a:hover{color:var(--tx);border-color:#666}
+    .chips a.on{background:var(--tx);color:#000;border-color:var(--tx)}
+    .kind{display:inline-block;font-size:12px;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 12px;margin-bottom:14px}
+    h1.t{font-size:clamp(34px,6vw,56px);margin-bottom:10px}
+    .intro{color:var(--mut);max-width:620px;margin-bottom:36px}
+    .step{display:grid;grid-template-columns:44px 1fr;gap:16px;margin-bottom:30px}
+    .num{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:"Space Grotesk",Inter,sans-serif}
+    .step h3{font-size:20px;margin:6px 0 6px}
+    .step p{color:var(--mut);font-size:15px;margin-bottom:12px}
+    .code{background:#07070a;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:6px}
+    .code .bar{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line);font-size:12px;color:var(--mut)}
+    .code button{background:none;border:1px solid var(--line);color:var(--tx);border-radius:999px;padding:3px 12px;font-size:12px;cursor:pointer;transition:.2s}
+    .code button:hover{border-color:#777}
+    .code pre{padding:16px;overflow-x:auto;font:14px/1.6 ui-monospace,Consolas,Menlo,monospace;color:#e8e8e8}
+    .out{border:1px solid var(--line);border-left:3px solid #7c5cff;border-radius:12px;background:var(--card);padding:16px 18px;margin-top:10px}
+    .out b{display:block;font-size:12px;color:var(--mut);font-weight:500;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+    .out pre{font:14px/1.6 ui-monospace,Consolas,Menlo,monospace;white-space:pre-wrap}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:48px;flex-wrap:wrap}
+    .picks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .pick{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;transition:transform .25s,border-color .25s}
+    .pick:hover{transform:translateY(-4px);border-color:#666}
+    .pick b{font:500 20px/1.2 "Space Grotesk",Inter,sans-serif}
+    .pick span{font-size:13px;color:var(--mut)}
+    .pick em{font-style:normal;font-size:13px;color:var(--tx);margin-top:10px}
+    .chips a.all{color:var(--tx)}
+    @media(max-width:820px){.picks{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.step{grid-template-columns:1fr}.num{width:36px;height:36px}}
+  </style>
+</head>
+<body>
+<nav class="lnav">
+  <div class="wrap">
+    <a class="logo" href="index.html">IAN<span>/</span>ARGAO</a>
+    <a class="back" href="index.html#skills">&larr; Back to portfolio</a>
+  </div>
+</nav>
+<main>
+  <div class="chips" id="chips"></div>
+  <article id="view"></article>
+  <div class="pager" id="pager"></div>
+</main>
+
+<script>
+const D = {
+  python: {
+    name: "Python", kind: "Programming language",
+    intro: "Python is simple to read and great for beginners. Here is how to run your first program.",
+    steps: [
+      {t: "Install Python", d: "Download it from python.org. In the installer, tick “Add Python to PATH”, then click Install. Check that it works:", code: "python --version", file: "Terminal"},
+      {t: "Create hello.py", d: "Make a new file named hello.py (you can use VS Code or Notepad) and type:", code: 'print("Hello, World!")', file: "hello.py"},
+      {t: "Run it", d: "Open a terminal in the same folder (in VS Code press Ctrl + `) and run:", code: "python hello.py", file: "Terminal"},
+      {d: "If “python” is not recognized, try this instead:", code: "py hello.py", file: "Terminal"}
+    ],
+    out: "Hello, World!"
+  },
+  javascript: {
+    name: "JavaScript", kind: "Programming language",
+    intro: "JavaScript runs in every web browser, and also on your computer through Node.js. Pick whichever you like.",
+    steps: [
+      {t: "Option A: in the browser", d: "Create hello.html and put this inside:", code: '<!DOCTYPE html>\n<html>\n<body>\n  <script>\n    console.log("Hello, World!");\n    alert("Hello, World!");\n  <\/script>\n</body>\n</html>', file: "hello.html"},
+      {d: "Open the file in your browser. A popup appears. Press F12 and open the Console tab to see the console.log message."},
+      {t: "Option B: with Node.js", d: "Install Node.js from nodejs.org, then create hello.js:", code: 'console.log("Hello, World!");', file: "hello.js"},
+      {d: "Run it from the terminal:", code: "node hello.js", file: "Terminal"}
+    ],
+    out: "Hello, World!"
+  },
+  html: {
+    name: "HTML", kind: "Markup language",
+    intro: "HTML is the structure of every web page. You do not need to install anything. Just a text editor and a browser.",
+    steps: [
+      {t: "Create hello.html", d: "Make a new file named hello.html and type:", code: '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <title>My First Page</title>\n</head>\n<body>\n  <h1>Hello, World!</h1>\n</body>\n</html>', file: "hello.html"},
+      {t: "Open it", d: "Double-click the file and it opens in your browser. With VS Code you can install the “Live Server” extension, right-click the file and choose “Open with Live Server” so the page refreshes every time you save."}
+    ],
+    out: "A web page with a big heading that says: Hello, World!"
+  },
+  css: {
+    name: "CSS", kind: "Styling language",
+    intro: "CSS makes HTML look good: colors, fonts and layout. You write it in a separate file and link it to your page.",
+    steps: [
+      {t: "Create index.html", d: "This page links to a CSS file called style.css:", code: '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  <h1>Hello, World!</h1>\n</body>\n</html>', file: "index.html"},
+      {t: "Create style.css", d: "Put it in the same folder:", code: 'body {\n  background: #111;\n  display: grid;\n  place-items: center;\n  height: 100vh;\n  margin: 0;\n}\n\nh1 {\n  color: #ff6b6b;\n  font-family: Arial, sans-serif;\n  font-size: 64px;\n}', file: "style.css"},
+      {t: "Open index.html", d: "Open it in your browser (or Live Server) and change the colors to see what happens."}
+    ],
+    out: "A dark page with a big red “Hello, World!” in the center."
+  },
+  sql: {
+    name: "SQL", kind: "Database language",
+    intro: "SQL is used to talk to databases. The easiest way to start is MySQL Workbench or XAMPP with phpMyAdmin.",
+    steps: [
+      {t: "Install MySQL", d: "Install MySQL (with MySQL Workbench) from mysql.com, or install XAMPP and start MySQL from its control panel."},
+      {t: "Open a query window", d: "In MySQL Workbench, open a connection and click a new SQL tab. Or in the terminal:", code: "mysql -u root -p", file: "Terminal"},
+      {t: "Run your first query", d: "Type this and run it (Ctrl + Enter in Workbench):", code: "SELECT 'Hello, World!' AS message;", file: "SQL"},
+      {t: "Try it with a real table", d: "Create a database, a table, add a row and read it back:", code: "CREATE DATABASE hello_db;\nUSE hello_db;\n\nCREATE TABLE greetings (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  message VARCHAR(50)\n);\n\nINSERT INTO greetings (message) VALUES ('Hello, World!');\n\nSELECT * FROM greetings;", file: "SQL"}
+    ],
+    out: "+---------------+\n| message       |\n+---------------+\n| Hello, World! |\n+---------------+"
+  },
+  java: {
+    name: "Java", kind: "Programming language",
+    intro: "Java programs are compiled first, then run. You need the JDK (Java Development Kit).",
+    steps: [
+      {t: "Install the JDK", d: "Download a JDK (for example Temurin from adoptium.net) and install it. Then check:", code: "java -version\njavac -version", file: "Terminal"},
+      {t: "Create Hello.java", d: "The class name must be the same as the file name (Hello):", code: 'public class Hello {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}', file: "Hello.java"},
+      {t: "Compile and run", d: "In the terminal, in the same folder:", code: "javac Hello.java\njava Hello", file: "Terminal"}
+    ],
+    out: "Hello, World!"
+  },
+  cpp: {
+    name: "C++", kind: "Programming language",
+    intro: "C++ is compiled into an .exe file. You need a compiler such as g++ (MinGW-w64 / MSYS2) or Visual Studio.",
+    steps: [
+      {t: "Install a compiler", d: "On Windows, install MSYS2 (msys2.org) and then g++, or use Visual Studio with the “Desktop development with C++” workload. Check:", code: "g++ --version", file: "Terminal"},
+      {t: "Create hello.cpp", d: "", code: '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!" << endl;\n    return 0;\n}', file: "hello.cpp"},
+      {t: "Compile and run", d: "Compile to hello.exe, then run it:", code: "g++ hello.cpp -o hello\n.\\hello.exe", file: "Terminal (Windows)"},
+      {d: "On Mac or Linux, run it like this instead:", code: "./hello", file: "Terminal"}
+    ],
+    out: "Hello, World!"
+  },
+  flask: {
+    name: "Flask", kind: "Python web framework",
+    intro: "Flask lets you build websites with Python. Your “Hello, World!” will show up in the browser.",
+    steps: [
+      {t: "Install Flask", d: "Make sure Python is installed, then run:", code: "pip install flask", file: "Terminal"},
+      {t: "Create app.py", d: "", code: 'from flask import Flask\n\napp = Flask(__name__)\n\n@app.route("/")\ndef hello():\n    return "Hello, World!"\n\nif __name__ == "__main__":\n    app.run(debug=True)', file: "app.py"},
+      {t: "Run the server", d: "", code: "python app.py", file: "Terminal"},
+      {t: "Open it in your browser", d: "Go to this address:", code: "http://127.0.0.1:5000", file: "Browser"}
+    ],
+    out: "Browser page: Hello, World!\nTerminal: Running on http://127.0.0.1:5000"
+  },
+  git: {
+    name: "Git", kind: "Version control",
+    intro: "Git saves the history of your code, so you can go back to any version. Your “Hello, World!” is your first commit.",
+    steps: [
+      {t: "Install Git", d: "Download it from git-scm.com and install. Check:", code: "git --version", file: "Terminal"},
+      {t: "Tell Git who you are (one time only)", d: "", code: 'git config --global user.name "Your Name"\ngit config --global user.email "you@email.com"', file: "Terminal"},
+      {t: "Make your first commit", d: "", code: 'mkdir hello-git\ncd hello-git\ngit init\necho "Hello, World!" > hello.txt\ngit add hello.txt\ngit commit -m "My first commit"', file: "Terminal"},
+      {t: "See your history", d: "", code: "git log --oneline", file: "Terminal"}
+    ],
+    out: "a1b2c3d My first commit"
+  },
+  github: {
+    name: "GitHub", kind: "Code hosting",
+    intro: "GitHub keeps your Git projects online. It can also host your portfolio for free with GitHub Pages.",
+    steps: [
+      {t: "Create an account and a repository", d: "Sign up at github.com, click New repository, and name it hello-world. Do not add a README yet."},
+      {t: "Push your project", d: "In your project folder (after your first commit), replace YOUR-USERNAME and run:", code: "git branch -M main\ngit remote add origin https://github.com/YOUR-USERNAME/hello-world.git\ngit push -u origin main", file: "Terminal"},
+      {t: "Check it online", d: "Refresh your repository page. Your files are now on GitHub."},
+      {t: "Bonus: host a website", d: "Go to Settings → Pages, choose the main branch, and Save. Your index.html goes live at https://YOUR-USERNAME.github.io/hello-world/"}
+    ],
+    out: "Your hello.txt file appears in the repository on github.com."
+  },
+  vscode: {
+    name: "VS Code", kind: "Code editor",
+    intro: "VS Code is where you write and run your code. Here is how to run Hello World without leaving the editor.",
+    steps: [
+      {t: "Install VS Code", d: "Download it from code.visualstudio.com and install."},
+      {t: "Open a folder", d: "Go to File → Open Folder and choose (or create) a folder for your project. Then click the New File icon and name it hello.py."},
+      {t: "Write the code", d: "", code: 'print("Hello, World!")', file: "hello.py"},
+      {t: "Run it", d: "Install the “Python” extension (Extensions icon on the left). Then click the ▶ Run button at the top right. Or open the terminal with Ctrl + ` and run:", code: "python hello.py", file: "Terminal"},
+      {t: "Helpful extensions", d: "Python, Live Server (for HTML), and Prettier (auto-format your code)."}
+    ],
+    out: "Hello, World! (shown in the Terminal panel at the bottom)"
+  },
+  figma: {
+    name: "Figma", kind: "Design tool",
+    intro: "Figma is for designing websites and apps before you code them. There is no code here, but you can still make your own Hello, World!",
+    steps: [
+      {t: "Create an account", d: "Sign up for free at figma.com and click New design file."},
+      {t: "Make a frame", d: "Press F, then choose a size on the right (for example Desktop). A frame is like your web page."},
+      {t: "Add text", d: "Press T, click inside the frame, and type Hello, World!. Change the font and size on the right."},
+      {t: "Preview it", d: "Click the ▶ Present button at the top right to see your design full screen."}
+    ],
+    out: "A frame with the text: Hello, World!"
+  }
+};
+const ORDER = ["python","javascript","html","css","sql","java","cpp","flask","git","github","vscode","figma"];
+
+function el(tag, cls, text){
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+function codeBlock(code, file){
+  const box = el("div","code");
+  const bar = el("div","bar");
+  bar.appendChild(el("span",null,file || "Code"));
+  const btn = el("button",null,"Copy");
+  btn.addEventListener("click", () => {
+    const done = () => { btn.textContent = "Copied!"; setTimeout(() => btn.textContent = "Copy", 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(code).then(done, done);
+    else done();
+  });
+  bar.appendChild(btn);
+  const pre = el("pre");
+  pre.appendChild(el("code",null,code));
+  box.appendChild(bar);
+  box.appendChild(pre);
+  return box;
+}
+
+function showPicker(){
+  document.title = "Choose a tool | Ian Argao";
+  document.getElementById("chips").textContent = "";
+  document.getElementById("pager").textContent = "";
+  const view = document.getElementById("view");
+  view.textContent = "";
+  view.appendChild(el("span","kind","Hello, World! guides"));
+  view.appendChild(el("h1","t","Choose a tool"));
+  view.appendChild(el("p","intro","Pick the language or tool you want to learn. You will see how to install it and run Hello, World!"));
+  const grid = el("div","picks");
+  ORDER.forEach(k => {
+    const a = el("a","pick");
+    a.href = "#" + k;
+    a.appendChild(el("b",null,D[k].name));
+    a.appendChild(el("span",null,D[k].kind));
+    a.appendChild(el("em",null,"Open guide →"));
+    grid.appendChild(a);
+  });
+  view.appendChild(grid);
+  window.scrollTo(0,0);
+}
+
+function render(){
+  let id = location.hash.slice(1).toLowerCase();
+  if (!D[id]) { showPicker(); return; }
+  const d = D[id];
+  document.title = "Hello, World! in " + d.name + " | Ian Argao";
+
+  const chips = document.getElementById("chips");
+  chips.textContent = "";
+  const all = el("a","all","← All tools");
+  all.href = "#";
+  chips.appendChild(all);
+  ORDER.forEach(k => {
+    const a = el("a", k === id ? "on" : "", D[k].name);
+    a.href = "#" + k;
+    chips.appendChild(a);
+  });
+
+  const view = document.getElementById("view");
+  view.textContent = "";
+  view.appendChild(el("span","kind",d.kind));
+  view.appendChild(el("h1","t","Hello, World! in " + d.name));
+  view.appendChild(el("p","intro",d.intro));
+
+  let n = 0;
+  d.steps.forEach(s => {
+    const row = el("div","step");
+    const body = el("div");
+    if (s.t) {
+      n++;
+      row.appendChild(el("div","num",String(n)));
+      body.appendChild(el("h3",null,s.t));
+    } else {
+      row.appendChild(el("div","num","•"));
+    }
+    if (s.d) body.appendChild(el("p",null,s.d));
+    if (s.code) body.appendChild(codeBlock(s.code, s.file));
+    row.appendChild(body);
+    view.appendChild(row);
+  });
+
+  const out = el("div","out");
+  out.appendChild(el("b",null,"Expected result"));
+  out.appendChild(el("pre",null,d.out));
+  view.appendChild(out);
+
+  const i = ORDER.indexOf(id);
+  const pager = document.getElementById("pager");
+  pager.textContent = "";
+  if (i > 0) { const p = el("a","btn","← " + D[ORDER[i-1]].name); p.href = "#" + ORDER[i-1]; pager.appendChild(p); } else pager.appendChild(el("span"));
+  if (i < ORDER.length - 1) { const nx = el("a","btn solid",D[ORDER[i+1]].name + " →"); nx.href = "#" + ORDER[i+1]; pager.appendChild(nx); }
+
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", render);
+render();
+</script>
+</body>
+</html>
