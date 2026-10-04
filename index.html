@@ -14,6 +14,686 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Real-photo project cards */
+    .card.proj {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .card.proj .project-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform .45s ease;
+    }
+
+    .card.proj:hover .project-img {
+      transform: scale(1.05);
+    }
+
+    .card.proj::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(5, 7, 14, .18) 0%,
+        rgba(5, 7, 14, .45) 48%,
+        rgba(5, 7, 14, .88) 100%
+      );
+      pointer-events: none;
+    }
+
+    .card.proj .pc {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(
+        165deg,
+        rgba(12, 14, 24, .68),
+        rgba(12, 14, 24, .30) 55%,
+        rgba(12, 14, 24, .55)
+      ) !important;
+      backdrop-filter: blur(1.5px);
+    }
+
+    /* Elegant contact section */
+    #contact .contact-modern {
+      display:grid;
+      grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+      gap:70px;
+      align-items:center;
+    }
+    #contact .contact-intro { padding:10px 0; }
+    #contact .contact-label {
+      display:inline-block; margin-bottom:18px;
+      font-family:"Space Grotesk",sans-serif; font-size:11px; font-weight:600;
+      letter-spacing:3px; color:#888;
+    }
+    #contact .contact-intro h2 {
+      margin:0 0 20px; font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(42px,5vw,68px); line-height:.98; letter-spacing:-2.5px;
+    }
+    #contact .contact-intro h2 span { color:#8ab4ff; }
+    #contact .contact-intro .sub { max-width:390px; margin:0; font-size:15px; line-height:1.8; color:#8c8c8c; }
+    #contact .contact-line { width:55px; height:1px; margin:32px 0; background:rgba(255,255,255,.25); }
+    #contact .social { display:flex; gap:10px; flex-wrap:wrap; }
+    #contact .social a {
+      width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+      border:1px solid rgba(255,255,255,.12); border-radius:50%;
+      color:#d8d8d8; background:rgba(255,255,255,.025); text-decoration:none;
+      transition:transform .25s ease,border-color .25s ease,background .25s ease,color .25s ease;
+    }
+    #contact .social a:hover { transform:translateY(-4px); border-color:rgba(138,180,255,.6); background:rgba(138,180,255,.08); color:#8ab4ff; }
+    #contact .contact-form-card {
+      padding:34px; border:1px solid rgba(255,255,255,.10); border-radius:24px;
+      background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+      box-shadow:0 25px 70px rgba(0,0,0,.28); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    }
+    #contact .form-heading { display:flex; align-items:center; gap:12px; margin-bottom:28px; }
+    #contact .form-heading span { font-family:"Space Grotesk",sans-serif; font-size:11px; letter-spacing:2px; color:#777; }
+    #contact .form-heading h3 { margin:0; font-family:"Space Grotesk",sans-serif; font-size:18px; font-weight:500; color:#f2f2f2; }
+    #contact #cf { display:flex; flex-direction:column; gap:20px; }
+    #contact .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    #contact .form-group { display:flex; flex-direction:column; gap:8px; }
+    #contact .form-group label { font-family:"Space Grotesk",sans-serif; font-size:11px; letter-spacing:1px; color:#777; }
+    #contact #cf input,#contact #cf textarea {
+      width:100%; box-sizing:border-box; border:1px solid rgba(255,255,255,.10); border-radius:12px;
+      outline:none; background:rgba(0,0,0,.18); color:#eee; font-family:"Inter",sans-serif; font-size:14px;
+      transition:border-color .25s ease,background .25s ease,box-shadow .25s ease;
+    }
+    #contact #cf input { height:52px; padding:0 16px; }
+    #contact #cf textarea { min-height:145px; padding:15px 16px; resize:vertical; }
+    #contact #cf input::placeholder,#contact #cf textarea::placeholder { color:#666; }
+    #contact #cf input:focus,#contact #cf textarea:focus { border-color:rgba(138,180,255,.55); background:rgba(255,255,255,.035); box-shadow:0 0 0 3px rgba(138,180,255,.06); }
+    #contact .contact-send {
+      width:100%; min-height:52px; display:flex; align-items:center; justify-content:space-between;
+      margin-top:2px; padding:0 18px; border:1px solid rgba(255,255,255,.12); border-radius:12px;
+      background:#f1f1f1; color:#090909; font-family:"Space Grotesk",sans-serif; font-size:13px; font-weight:500;
+      cursor:pointer; transition:transform .25s ease,background .25s ease;
+    }
+    #contact .contact-send i { font-size:18px; }
+    #contact .contact-send:hover { transform:translateY(-2px); background:#fff; }
+    @media (max-width:800px) {
+      #contact .contact-modern { grid-template-columns:1fr; gap:42px; }
+      #contact .contact-intro h2 { font-size:clamp(42px,14vw,58px); letter-spacing:-2px; }
+      #contact .contact-intro .sub { max-width:100%; font-size:14px; }
+      #contact .contact-line { margin:25px 0; }
+      #contact .contact-form-card { padding:24px 20px; border-radius:20px; }
+      #contact .form-row { grid-template-columns:1fr; gap:20px; }
+      #contact #cf { gap:18px; }
+      #contact #cf input { height:50px; }
+      #contact #cf textarea { min-height:135px; }
+    }
+    @media (max-width:420px) {
+      #contact .contact-form-card { padding:22px 16px; }
+      #contact .social a { width:42px; height:42px; }
+    }
+  </style>
+
+<style id="mobile-project-grid-3-rows">
+/* Projects: 2 cards per row on phones = 3 rows for 6 projects */
+@media (max-width: 700px) {
+  .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .grid .card.proj {
+    min-width: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .grid .card.proj .pc {
+    width: 100%;
+    height: 100%;
+    min-height: 0 !important;
+    box-sizing: border-box;
+    padding: 18px 14px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .grid .card.proj .project-img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .grid .card.proj h3 {
+    font-size: 15px !important;
+    line-height: 1.18 !important;
+  }
+
+  .grid .card.proj p {
+    font-size: 11px !important;
+    line-height: 1.45 !important;
+  }
+
+  .grid .card.proj .tag {
+    font-size: 9px !important;
+    padding: 5px 7px !important;
+  }
+
+  .grid .card.proj .project-img {
+    min-height: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .grid {
+    gap: 9px !important;
+  }
+
+  .grid .card.proj .pc {
+    padding: 16px 11px !important;
+  }
+
+  .grid .card.proj h3 {
+    font-size: 14px !important;
+  }
+}
+</style>
+
+
+<style id="project-card-content-fix">
+/* Project cards: keep the photo as the background and keep all card content visible */
+.card.proj {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  display: block !important;
+}
+
+.card.proj .project-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 0 !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.card.proj::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 7, 14, .08) 0%,
+    rgba(5, 7, 14, .28) 38%,
+    rgba(5, 7, 14, .92) 100%
+  ) !important;
+}
+
+.card.proj .pc {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+  padding: 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  color: #fff !important;
+}
+
+.card.proj .pc > .project-img {
+  position: absolute !important;
+  inset: 0 !important;
+}
+
+.card.proj .pc > i,
+.card.proj .pc > h3,
+.card.proj .pc > p,
+.card.proj .pc > .tags {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.card.proj .pc > i {
+  display: block !important;
+  margin: 0 0 10px !important;
+  font-size: 22px !important;
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.45) !important;
+}
+
+.card.proj .pc > h3 {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 7px !important;
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.65) !important;
+}
+
+.card.proj .pc > p {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 12px !important;
+  color: rgba(255,255,255,.88) !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.65) !important;
+}
+
+.card.proj .pc > .tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  width: 100% !important;
+}
+
+.card.proj .pc > .tags .tag {
+  position: relative !important;
+  z-index: 4 !important;
+}
+
+@media (max-width: 700px) {
+  .card.proj .pc {
+    padding: 16px !important;
+  }
+
+  .card.proj .pc > i {
+    margin-bottom: 7px !important;
+    font-size: 18px !important;
+  }
+
+  .card.proj .pc > h3 {
+    margin-bottom: 5px !important;
+    font-size: 14px !important;
+    line-height: 1.18 !important;
+  }
+
+  .card.proj .pc > p {
+    margin-bottom: 8px !important;
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+  }
+
+  .card.proj .pc > .tags {
+    gap: 4px !important;
+  }
+}
+</style>
+
+
+<style id="about-exact-design">
+/* =========================================================
+   ABOUT — futuristic neon/glass layout
+   Matches the approved About mockup while keeping the existing content.
+========================================================= */
+.about-exact-section {
+  position: relative;
+  padding: 42px 0 72px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 50%, rgba(25,65,150,.16), transparent 34%),
+    radial-gradient(circle at 90% 60%, rgba(67,31,150,.16), transparent 34%);
+}
+
+.about-exact-section::before,
+.about-exact-section::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  border: 1px solid rgba(48,119,255,.16);
+  transform: rotate(-22deg);
+}
+.about-exact-section::before { left: -390px; top: 170px; }
+.about-exact-section::after { right: -390px; top: 270px; border-color: rgba(125,64,255,.17); }
+
+.about-exact {
+  position: relative;
+  z-index: 2;
+  width: min(1145px, calc(100% - 34px));
+  margin: 0 auto;
+  padding: 40px 34px 34px;
+  display: grid;
+  grid-template-columns: 365px minmax(0, 1fr);
+  gap: 40px;
+  border: 1px solid rgba(52,126,255,.52);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(9,21,42,.94), rgba(5,11,25,.96) 55%, rgba(12,9,34,.94));
+  box-shadow: 0 0 0 1px rgba(30,91,220,.08) inset, 0 25px 80px rgba(0,0,0,.45), 0 0 42px rgba(30,101,255,.10);
+  overflow: hidden;
+}
+
+.about-exact::before {
+  content: "";
+  position: absolute;
+  left: 42px;
+  top: -2px;
+  width: 110px;
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #23a7ff, #7b55ff);
+  box-shadow: 0 0 18px #257dff;
+}
+
+.about-exact-profile {
+  position: relative;
+  align-self: start;
+  padding: 2px 0 0;
+}
+
+.about-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 495px;
+  padding: 10px;
+  border: 1px solid rgba(52,132,255,.72);
+  border-radius: 19px;
+  background: rgba(5,14,30,.78);
+  box-shadow: 0 0 28px rgba(34,111,255,.16), 0 0 0 1px rgba(93,77,255,.08) inset;
+}
+
+.about-photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 19px;
+  box-shadow: inset 0 0 30px rgba(38,112,255,.13);
+  pointer-events: none;
+}
+
+.about-photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 13px;
+}
+
+.about-signature {
+  position: absolute;
+  right: 24px;
+  top: 20px;
+  color: #4ea8ff;
+  font: 400 42px/1 "Brush Script MT", "Segoe Script", cursive;
+  transform: rotate(-8deg);
+  text-shadow: 0 0 14px rgba(43,137,255,.65);
+}
+
+.about-corner {
+  position: absolute;
+  z-index: 3;
+  width: 48px;
+  height: 20px;
+  border-top: 3px solid #24a8ff;
+  pointer-events: none;
+  filter: drop-shadow(0 0 7px rgba(36,168,255,.8));
+}
+.about-corner::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 18px;
+  background: #24a8ff;
+  box-shadow: 0 0 8px #24a8ff;
+}
+.corner-a { left: -1px; top: 2px; }
+.corner-a::after { left: 0; top: 0; }
+.corner-b { right: -1px; bottom: 48px; transform: rotate(180deg); }
+.corner-b::after { left: 0; top: 0; }
+
+.about-profile-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8px 0;
+}
+.about-profile-bottom strong,
+.about-profile-bottom span {
+  display: block;
+}
+.about-profile-bottom strong {
+  color: #d9e7ff;
+  font-size: 14px;
+  letter-spacing: .2px;
+}
+.about-profile-bottom span {
+  margin-top: 5px;
+  color: #8ea1bd;
+  font-size: 11px;
+}
+.about-mini-line { width: 82px; }
+.about-mini-line span {
+  display: block;
+  width: 82px;
+  height: 3px;
+  background: linear-gradient(90deg, #2b9dff 0 62%, #4e48b5 62%);
+  box-shadow: 0 0 10px rgba(45,134,255,.35);
+}
+
+.about-exact-content {
+  min-width: 0;
+  padding-top: 7px;
+}
+.about-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #dce7ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .34em;
+}
+.about-eyebrow i {
+  display: block;
+  width: 225px;
+  max-width: 35%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(53,117,255,.8), rgba(53,117,255,.15));
+}
+.about-exact-content h2 {
+  margin: 22px 0 15px;
+  color: #eef5ff;
+  font-size: clamp(38px, 4vw, 53px);
+  line-height: 1.04;
+  letter-spacing: -.045em;
+  font-weight: 700;
+}
+.about-exact-content h2 b {
+  color: #5a8dff;
+  background: linear-gradient(90deg, #49a9ff, #6f7dff, #8e55ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.about-lead {
+  max-width: 680px;
+  margin: 0 0 17px;
+  color: #b7c8e0;
+  font-size: 14px;
+  line-height: 1.62;
+}
+.about-exact-quote {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 24px 0 22px;
+  padding: 13px 17px;
+  min-height: 56px;
+  border: 1px solid rgba(74,92,255,.85);
+  border-radius: 13px;
+  background: linear-gradient(100deg, rgba(21,50,128,.38), rgba(35,18,91,.44));
+  box-shadow: 0 0 20px rgba(58,79,255,.14), inset 0 0 18px rgba(66,94,255,.08);
+}
+.quote-mark {
+  color: #4f91ff;
+  font-size: 48px;
+  line-height: .7;
+  font-weight: 700;
+}
+.about-exact-quote strong {
+  color: #dfe9ff;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.about-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.about-info-card {
+  min-width: 0;
+  padding: 18px 14px 15px;
+  border: 1px solid rgba(61,99,170,.35);
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgba(9,23,47,.72), rgba(10,19,39,.52));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+}
+.about-info-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 4px 13px;
+  color: #dbe7ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .17em;
+}
+.about-info-title i {
+  color: #4d95ff;
+  font-size: 19px;
+  filter: drop-shadow(0 0 6px rgba(54,135,255,.45));
+}
+.about-info-row,
+.about-focus-row {
+  display: grid;
+  align-items: center;
+  gap: 9px;
+  min-height: 38px;
+  margin-top: 7px;
+  padding: 7px 10px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, rgba(37,61,105,.64), rgba(27,44,80,.47));
+  color: #d8e5fb;
+  font-size: 11px;
+}
+.about-info-row { grid-template-columns: 20px 68px minmax(0,1fr); }
+.about-info-row > i, .about-focus-row > i { color: #5d9fff; font-size: 17px; }
+.about-info-row span { color: #c3d2e8; }
+.about-info-row b {
+  min-width: 0;
+  color: #9fb5d3;
+  font-weight: 500;
+  text-align: right;
+}
+.about-focus-row {
+  grid-template-columns: 21px minmax(0,1fr);
+}
+.about-focus-row > i { color: #7b56ff; }
+
+@media (max-width: 980px) {
+  .about-exact {
+    grid-template-columns: 290px minmax(0, 1fr);
+    gap: 28px;
+    padding: 30px 25px;
+  }
+  .about-photo-frame { height: 430px; }
+  .about-info-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .about-exact-section { padding: 22px 0 55px; }
+  .about-exact {
+    width: min(100% - 20px, 560px);
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 22px 16px 24px;
+    border-radius: 20px;
+  }
+  .about-exact-profile { max-width: 330px; margin: 0 auto; width: 100%; }
+  .about-photo-frame { height: min(110vw, 430px); }
+  .about-profile-bottom { padding-top: 15px; }
+  .about-eyebrow { font-size: 10px; letter-spacing: .24em; }
+  .about-eyebrow i { max-width: 28%; }
+  .about-exact-content h2 { font-size: 35px; margin-top: 17px; }
+  .about-lead { font-size: 13px; line-height: 1.58; }
+  .about-exact-quote { margin-top: 19px; }
+  .about-info-grid { grid-template-columns: 1fr; gap: 12px; }
+  .about-info-row { grid-template-columns: 20px 63px minmax(0,1fr); }
+  .about-info-row b { font-size: 10px; }
+}
+
+@media (max-width: 380px) {
+  .about-exact { width: calc(100% - 14px); padding: 18px 12px 20px; }
+  .about-exact-content h2 { font-size: 31px; }
+  .about-lead { font-size: 12px; }
+  .about-exact-quote strong { font-size: 11px; }
+}
+</style>
+
+<style id="mobile-hero-ia-size">
+/* Make the large IA background mark much bigger on phone screens */
+@media (max-width: 700px) {
+  .hero {
+    overflow: hidden;
+  }
+
+  .hero .mono {
+    font-size: clamp(230px, 78vw, 390px) !important;
+    line-height: .72 !important;
+    left: -8vw !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    opacity: .20 !important;
+    z-index: 0 !important;
+    pointer-events: none;
+  }
+
+  .hero .wrap > div:not(.mono),
+  .hero .wrap > h1,
+  .hero .wrap > p,
+  .hero .wrap > .btns {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero .mono {
+    font-size: clamp(250px, 86vw, 410px) !important;
+    left: -13vw !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -124,87 +804,64 @@
      ABOUT
 ========================================================= -->
 <div id="about">
-  <section>
+  <section class="about-exact-section">
     <div class="wrap">
-      <div class="about-new-design">
+      <div class="about-exact">
 
-        <!-- Left Profile Image -->
-        <div class="about-profile">
-          <img src="images/ian.jpg" alt="Ian Argao">
+        <div class="about-exact-profile">
+          <div class="about-corner corner-a"></div>
+          <div class="about-corner corner-b"></div>
+          <div class="about-photo-frame">
+            <img src="images/ian.jpg" alt="Ian Argao">
+            <div class="about-signature">Ian</div>
+          </div>
+          <div class="about-profile-bottom">
+            <div>
+              <strong>BSCS Student</strong>
+              <span>Holy Cross College of Sta. Rosa</span>
+            </div>
+            <div class="about-mini-line"><span></span></div>
+          </div>
         </div>
 
-        <!-- Right Content Cards -->
-        <div class="about-cards">
+        <div class="about-exact-content">
+          <div class="about-eyebrow"><span>ABOUT ME</span><i></i></div>
+          <h2>Hi, I'm <b>Ian Argao</b></h2>
 
-          <!-- Main About Card -->
-          <div class="about-card main-card">
-            <h2>About me</h2>
+          <p class="about-lead">
+            I'm John Michael F. Argao, but my friends call me JM or Argao.
+            My crush, however, calls me Ian—yiee! I'm currently a BSCS student
+            at Holy Cross College of Sta. Rosa, Nueva Ecija.
+          </p>
 
-            <div class="about-item">
-              <h3>Who I Am</h3>
-              <p class="sub">
-                Hi! My name is <strong>John Michael F. Argao</strong>,
-                but my friends call me <strong>JM</strong> or
-                <strong>Argao</strong>. My crush, however, calls me
-                <strong>Ian</strong>—yiee! 😆
-              </p>
-            </div>
+          <p class="about-lead">
+            I chose this program because technology is everywhere, and I believe
+            it gives us the power to turn ideas into reality. Every project, bug,
+            and late-night code session teaches me something new.
+          </p>
 
-            <div class="about-item">
-              <h3>What I Do</h3>
-              <p class="sub">
-                I’m currently a <strong>BSCS student at Holy Cross College of Sta. Rosa, Nueva Ecija</strong>,
-                building small web apps, exploring AI tools, and improving my skills in programming and design.
-              </p>
-            </div>
-
-            <div class="about-item">
-              <h3>My Journey</h3>
-              <p class="sub">
-                I chose this program because technology is everywhere, and I believe it gives us the power to turn ideas into reality.
-                Every project, bug, and late-night code session teaches me something new.
-              </p>
-            </div>
-
-            <div class="about-item">
-              <h3>What I Bring to the Table</h3>
-              <p class="sub">
-                I bring curiosity, patience, and a willingness to learn. I don’t just code — I try to create things that are
-                clean, functional, and meaningful.
-              </p>
-            </div>
-
-            <!-- Quote Box -->
-            <div class="about-quote">
-              <p>
-                <strong>“Failure is not the end — it is simply part of success.”</strong>
-              </p>
-            </div>
+          <div class="about-exact-quote">
+            <span class="quote-mark">“</span>
+            <strong>“Failure is not the end — it's simply part of success.”</strong>
           </div>
 
-          <!-- Side Info Cards -->
-          <div class="about-side-cards">
-            <div class="side-card">
-              <h4>Basic Info</h4>
-              <ul>
-                <li><span>Location:</span> M.S. Garcia, Cabanatuan City</li>
-                <li><span>Course:</span> BSCS</li>
-                <li><span>School:</span> Holy Cross College</li>
-                <li><span>Hobbies:</span> Coding, Basketball, Anime, Music</li>
-              </ul>
+          <div class="about-info-grid">
+            <div class="about-info-card">
+              <div class="about-info-title"><i class="ti ti-user"></i><span>BASIC INFO</span></div>
+              <div class="about-info-row"><i class="ti ti-user"></i><span>Name</span><b>John Michael F. Argao</b></div>
+              <div class="about-info-row"><i class="ti ti-id"></i><span>Nickname</span><b>JM / Argao (Ian - crush)</b></div>
+              <div class="about-info-row"><i class="ti ti-map-pin"></i><span>Location</span><b>M.S. Garcia, Cabanatuan City</b></div>
+              <div class="about-info-row"><i class="ti ti-school"></i><span>Course</span><b>BSCS (Holy Cross College)</b></div>
             </div>
 
-            <div class="side-card">
-              <h4>Current Focus</h4>
-              <ul>
-                <li>Building portfolio projects</li>
-                <li>Learning Flask and SQL</li>
-                <li>Improving UI/UX design</li>
-                <li>Exploring AI tools</li>
-              </ul>
+            <div class="about-info-card">
+              <div class="about-info-title"><i class="ti ti-target-arrow"></i><span>CURRENT FOCUS</span></div>
+              <div class="about-focus-row"><i class="ti ti-school"></i><span>Graduate with a BSCS degree</span></div>
+              <div class="about-focus-row"><i class="ti ti-code"></i><span>Build real-world projects</span></div>
+              <div class="about-focus-row"><i class="ti ti-brain"></i><span>Improve my coding &amp; problem-solving</span></div>
+              <div class="about-focus-row"><i class="ti ti-star"></i><span>Create a better future for myself</span></div>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -479,6 +1136,8 @@
 
           <div class="pc">
 
+            <img class="project-img" src="https://images.unsplash.com/photo-1775993167276-743bbcde77e1?auto=format&fit=crop&w=1200&q=85" alt="Modern gym interior with exercise equipment" loading="lazy">
+
             <i class="ti ti-folder"></i>
 
             <h3>
@@ -520,6 +1179,8 @@
         >
 
           <div class="pc">
+
+            <img class="project-img" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=85" alt="Couple holding hands" loading="lazy">
 
             <i class="ti ti-folder"></i>
 
@@ -563,6 +1224,8 @@
 
           <div class="pc">
 
+            <img class="project-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=85" alt="Students in a classroom" loading="lazy">
+
             <i class="ti ti-folder"></i>
 
             <h3>
@@ -604,6 +1267,8 @@
         >
 
           <div class="pc">
+
+            <img class="project-img" src="https://images.unsplash.com/photo-1735825764485-93a381fd5779?auto=format&fit=crop&w=1200&q=85" alt="Person working with documents and a laptop" loading="lazy">
 
             <i class="ti ti-folder"></i>
 
@@ -647,6 +1312,8 @@
 
           <div class="pc">
 
+            <img class="project-img" src="https://images.unsplash.com/photo-1664575262619-b28fef7a40a4?auto=format&fit=crop&w=1200&q=85" alt="Office worker with laptop and papers" loading="lazy">
+
             <i class="ti ti-folder"></i>
 
             <h3>
@@ -688,6 +1355,8 @@
         >
 
           <div class="pc">
+
+            <img class="project-img" src="https://images.unsplash.com/photo-1759215524484-89c8d7ae28f2?auto=format&fit=crop&w=1200&q=85" alt="Laptop showing presentation slides" loading="lazy">
 
             <i class="ti ti-folder"></i>
 
@@ -987,112 +1656,62 @@
 
     <div class="wrap">
 
-      <div class="two">
+      <div class="contact-modern">
 
+        <div class="contact-intro">
+          <span class="contact-label">GET IN TOUCH</span>
 
-        <div>
-
-          <h2>
-            Let's talk
-          </h2>
+          <h2>Let's talk<span>.</span></h2>
 
           <p class="sub">
-            Send me a message. It opens in Gmail so you can send it right away.
+            Have a project, idea, or question? Send me a message and I'll get back to you.
           </p>
 
+          <div class="contact-line"></div>
 
           <div class="social">
-
-            <a
-              href="https://www.google.com/search?q=gmail"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Gmail"
-            >
-              <i class="ti ti-brand-gmail"></i>
-            </a>
-
-
-            <a
-              href="https://www.google.com/search?q=github"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <i class="ti ti-brand-github"></i>
-            </a>
-
-
-            <a
-              href="https://www.google.com/search?q=facebook"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <i class="ti ti-brand-facebook"></i>
-            </a>
-
-
-            <a
-              href="https://www.google.com/search?q=instagram"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <i class="ti ti-brand-instagram"></i>
-            </a>
-
-
-            <a
-              href="https://www.google.com/search?q=linkedin"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <i class="ti ti-brand-linkedin"></i>
-            </a>
-
+            <a href="https://www.google.com/search?q=gmail" target="_blank" rel="noopener noreferrer" aria-label="Gmail"><i class="ti ti-brand-gmail"></i></a>
+            <a href="https://www.google.com/search?q=github" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="ti ti-brand-github"></i></a>
+            <a href="https://www.google.com/search?q=facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+            <a href="https://www.google.com/search?q=instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+            <a href="https://www.google.com/search?q=linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
           </div>
-
         </div>
 
+        <div class="contact-form-card">
+          <div class="form-heading">
+            <span>01</span>
+            <h3>Send a message</h3>
+          </div>
 
-        <form id="cf">
+          <form id="cf">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Name</label>
+                <input id="contact-name" name="name" type="text" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input id="contact-email" name="email" type="email" placeholder="name@email.com" required>
+              </div>
+            </div>
 
-          <input
-            name="name"
-            placeholder="Your name"
-            required
-          >
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input id="contact-subject" name="subject" type="text" placeholder="What is this about?" required>
+            </div>
 
-          <input
-            name="email"
-            type="email"
-            placeholder="name@email.com"
-            required
-          >
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+            </div>
 
-          <input
-            name="subject"
-            placeholder="Subject"
-            required
-          >
-
-          <textarea
-            name="message"
-            rows="6"
-            placeholder="Your message"
-            required
-          ></textarea>
-
-          <button
-            class="btn solid"
-            type="submit"
-          >
-            Send via Gmail
-          </button>
-
-        </form>
+            <button class="contact-send" type="submit">
+              <span>Send via Gmail</span>
+              <i class="ti ti-arrow-up-right"></i>
+            </button>
+          </form>
+        </div>
 
       </div>
 

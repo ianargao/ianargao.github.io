@@ -567,3 +567,52 @@ a.tool:focus-visible{
     padding: 18px;
   }
 }
+
+
+/* =========================================================
+   MOBILE HERO — LARGE "IA" BACKGROUND MONOGRAM
+   Keeps the desktop design unchanged.
+========================================================= */
+@media (max-width: 600px){
+  .hero{
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero .wrap{
+    position:relative;
+    z-index:1;
+  }
+
+  .hero .wrap>div:first-child{
+    position:relative;
+    overflow:visible;
+  }
+
+  .mono{
+    left:50%;
+    top:43%;
+    transform:translate(-50%,-50%);
+    font-size:120vw;
+    line-height:.72;
+    letter-spacing:-.12em;
+    z-index:0;
+    opacity:1;
+    background:linear-gradient(
+      180deg,
+      rgba(255,255,255,.42),
+      rgba(255,255,255,.08)
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    pointer-events:none;
+  }
+
+  .hero h1,
+  .hero .type,
+  .hero .btns{
+    position:relative;
+    z-index:2;
+  }
+}
