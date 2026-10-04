@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hobby | Ian Argao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:#08080b;color:#ececf1;font:16px/1.7 Inter,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+.top{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:30;width:min(1100px,calc(100% - 28px));
+  display:flex;justify-content:space-between;align-items:center;padding:10px 12px 10px 22px;border-radius:999px;
+  background:rgba(12,12,16,.65);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12)}
+.logo{font:800 17px/1 Syne,Inter,sans-serif;letter-spacing:-.01em}.logo span{opacity:.5}
+.back{font-size:13.5px;padding:9px 18px;border-radius:999px;background:#f2f2f2;color:#000;font-weight:500;transition:.2s}
+.back:hover{background:#fff;transform:translateX(-2px)}
+.lang{display:none}.lang.on{display:block}
+.hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;padding:120px 24px 54px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(8,8,11,.35) 0%,rgba(8,8,11,.92) 85%,#08080b 100%),var(--img) center/cover,#101018}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 15% 105%,var(--ac),transparent 70%);opacity:.3;pointer-events:none}
+.hero-in{position:relative;max-width:1100px;margin:0 auto;width:100%}
+.pill{display:inline-block;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ac);border:1px solid var(--ac);border-radius:999px;padding:4px 14px;margin-bottom:18px;background:rgba(0,0,0,.35)}
+.hero h1{font:800 clamp(52px,11vw,132px)/.92 Syne,Inter,sans-serif;letter-spacing:-.04em;margin-bottom:20px}
+.hero p{max-width:620px;font-size:clamp(16px,2vw,19px);color:#c9c9d2}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.stats span{font-size:13px;color:#b9b9c4;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+.stats b{color:var(--ac);font-weight:600;margin-right:3px}
+.layout{max-width:1100px;margin:0 auto;padding:56px 24px 100px;display:grid;grid-template-columns:190px 1fr;gap:56px}
+.side{position:sticky;top:96px;align-self:start;display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(255,255,255,.1)}
+.side button{background:none;border:0;color:#8d8d99;font:inherit;font-size:14.5px;text-align:left;padding:8px 0 8px 18px;margin-left:-1px;border-left:2px solid transparent;cursor:pointer;transition:.2s}
+.side button:hover{color:#fff}
+.side button.on{color:var(--ac);border-left-color:var(--ac)}
+section{scroll-margin-top:96px;margin-bottom:68px}
+h2{display:flex;align-items:baseline;gap:14px;font:800 clamp(28px,4vw,40px)/1 Syne,Inter,sans-serif;letter-spacing:-.03em;margin-bottom:28px}
+h2 span{font:500 14px/1 Inter,sans-serif;color:var(--ac);letter-spacing:.1em}
+.tlw{position:relative;padding-left:32px}
+.tlw:before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--ac),rgba(255,255,255,.06))}
+.ev{position:relative;padding-bottom:26px}
+.ev:before{content:"";position:absolute;left:-32px;top:6px;width:14px;height:14px;border-radius:50%;background:#08080b;border:3px solid var(--ac);box-shadow:0 0 14px var(--ac)}
+.ev em{display:block;font:normal 700 15px/1.2 Syne,Inter,sans-serif;color:var(--ac);letter-spacing:.02em;margin-bottom:4px}
+.ev p{color:#c4c4ce;font-size:15.5px;max-width:640px}
+.pcs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pc{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.09)}
+.pc i{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:800 19px Syne,Inter,sans-serif;font-style:normal;color:#08080b;background:var(--ac)}
+.pc b{display:block;font:700 16px/1.25 Syne,Inter,sans-serif;margin-bottom:4px}
+.pc span{font-size:14px;color:#a9a9b5;display:block;line-height:1.5}
+.sts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.st{position:relative;padding:22px 20px 20px;border-radius:18px;background:#101015;border:1px solid rgba(255,255,255,.08);overflow:hidden}
+.st u{display:block;text-decoration:none;font:800 46px/1 Syne,Inter,sans-serif;color:transparent;-webkit-text-stroke:1.5px var(--ac);margin-bottom:12px;opacity:.9}
+.st b{display:block;font:700 17px/1.25 Syne,Inter,sans-serif;margin-bottom:6px}
+.st p{font-size:14.5px;color:#a9a9b5;line-height:1.55}
+.go{display:inline-block;margin-top:26px;padding:13px 26px;border-radius:999px;background:var(--ac);color:#08080b;font-weight:600;font-size:15px;transition:.2s}
+.go:hover{transform:translateY(-2px);box-shadow:0 8px 28px -6px var(--ac)}
+.rl{list-style:none;counter-reset:r;display:grid;gap:12px;padding:6px;border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.05),transparent);border:1px solid rgba(255,255,255,.09)}
+.rl li{counter-increment:r;display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;padding:14px 16px;font-size:15.5px;color:#e6e6ec;border-radius:14px}
+.rl li:nth-child(odd){background:rgba(255,255,255,.035)}
+.rl li:before{content:counter(r);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font:700 14px Syne,Inter,sans-serif;color:#08080b;background:var(--ac)}
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr;gap:28px;padding-top:30px}
+  .side{position:sticky;top:76px;z-index:20;flex-direction:row;overflow-x:auto;border-left:0;gap:8px;padding:8px 0;background:#08080b}
+  .side button{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:7px 16px;margin:0;white-space:nowrap}
+  .side button.on{border-color:var(--ac)}
+  .hero{min-height:54vh;padding-top:100px}
+}
+@media(max-width:620px){.pcs,.sts{grid-template-columns:1fr}.logo{font-size:15px}.top{padding-left:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top">
+  <a class="logo" href="index.html">IAN<span>/</span>ARGAO</a>
+  <a class="back" href="index.html#hobbies">&larr; Back to portfolio</a>
+</div>
+<article class="lang" id="coding" style="--ac:#38bdf8;--img:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')">
+<header class="hero"><div class="hero-in">
+  <span class="pill">Hobby · Technology</span>
+  <h1>Coding</h1>
+  <p>Coding is writing instructions that a computer can follow. Every app, website and game you use started as lines of code.</p>
+  <div class="stats"><span><b>7</b> milestones</span><span><b>4</b> key names</span><span><b>6</b> steps</span></div>
+</div></header>
+<div class="layout">
+  <aside class="side"><button type="button" data-t="coding-history">History</button><button type="button" data-t="coding-people">Key people</button><button type="button" data-t="coding-start">Get started</button></aside>
+  <div class="content">
+    <section id="coding-history"><h2><span>01</span>History</h2><div class="tlw"><div class="ev"><em>1843</em><p>Ada Lovelace writes notes on Charles Babbage's Analytical Engine that include what many people consider the first computer program.</p></div><div class="ev"><em>1940s</em><p>The first electronic computers are programmed with machine code and cables, one tiny instruction at a time.</p></div><div class="ev"><em>1957</em><p>FORTRAN, led by John Backus at IBM, becomes one of the first high-level languages, so people can write math in a form closer to English.</p></div><div class="ev"><em>1959</em><p>COBOL is created for business computing, strongly influenced by Grace Hopper's work.</p></div><div class="ev"><em>1972</em><p>Dennis Ritchie creates C at Bell Labs. It still sits underneath many operating systems today.</p></div><div class="ev"><em>1991</em><p>Guido van Rossum releases Python, designed to be readable and friendly. The first website also goes public at CERN.</p></div><div class="ev"><em>1995</em><p>JavaScript (Brendan Eich at Netscape) and Java (James Gosling at Sun Microsystems) both appear.</p></div></div></section>
+    <section id="coding-people"><h2><span>02</span>Key people</h2><div class="pcs"><div class="pc"><i>A</i><div><b>Ada Lovelace</b><span>Wrote the first algorithm meant for a machine.</span></div></div><div class="pc"><i>G</i><div><b>Grace Hopper</b><span>Built early compilers and helped make “bug” a famous word after a moth was found in a computer in 1947.</span></div></div><div class="pc"><i>D</i><div><b>Dennis Ritchie</b><span>Created C and co-created Unix.</span></div></div><div class="pc"><i>G</i><div><b>Guido van Rossum</b><span>Created Python.</span></div></div></div></section>
+    <section id="coding-start"><h2><span>03</span>Get started</h2><div class="sts"><div class="st"><u>01</u><b>Pick a first language</b><p>Python is great for beginners. Use HTML, CSS and JavaScript if you want to build websites.</p></div><div class="st"><u>02</u><b>Install an editor</b><p>VS Code is free and works for almost every language.</p></div><div class="st"><u>03</u><b>Write Hello, World!</b><p>Print your first line and run it. Open the Tools section on my portfolio to see how.</p></div><div class="st"><u>04</u><b>Build tiny projects</b><p>A calculator, a to-do list, a quiz. Small projects teach the most.</p></div><div class="st"><u>05</u><b>Use Git and GitHub</b><p>Save your work, track changes and share it with others.</p></div><div class="st"><u>06</u><b>Learn from bugs</b><p>Every error message is a clue. Read it, fix it, and you get better.</p></div></div><a class="go" href="language.html#python">See how to run Hello, World! &rarr;</a></section>
+    
+  </div>
+</div>
+</article>
+<article class="lang" id="basketball" style="--ac:#fb923c;--img:url('https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')">
+<header class="hero"><div class="hero-in">
+  <span class="pill">Hobby · Sport</span>
+  <h1>Basketball</h1>
+  <p>Basketball is a fast team sport where two teams try to throw a ball through the other team's hoop.</p>
+  <div class="stats"><span><b>6</b> milestones</span><span><b>4</b> key names</span><span><b>4</b> steps</span><span><b>8</b> rules</span></div>
+</div></header>
+<div class="layout">
+  <aside class="side"><button type="button" data-t="basketball-history">History</button><button type="button" data-t="basketball-people">Key people</button><button type="button" data-t="basketball-start">Get started</button><button type="button" data-t="basketball-rules">Rules</button></aside>
+  <div class="content">
+    <section id="basketball-history"><h2><span>01</span>History</h2><div class="tlw"><div class="ev"><em>1891</em><p>Dr. James Naismith invents basketball at the YMCA Training School in Springfield, Massachusetts. The first games used a peach basket as the goal.</p></div><div class="ev"><em>1891</em><p>Naismith writes the first 13 rules of the game.</p></div><div class="ev"><em>1932</em><p>FIBA, the international basketball federation, is founded.</p></div><div class="ev"><em>1936</em><p>Men's basketball becomes an Olympic sport at the Berlin Games.</p></div><div class="ev"><em>1946</em><p>The BAA is founded in the United States. It becomes the NBA after merging with the NBL in 1949.</p></div><div class="ev"><em>1975</em><p>The Philippine Basketball Association (PBA) starts, the first professional basketball league in Asia.</p></div></div></section>
+    <section id="basketball-people"><h2><span>02</span>Key people</h2><div class="pcs"><div class="pc"><i>J</i><div><b>James Naismith</b><span>Inventor of basketball.</span></div></div><div class="pc"><i>F</i><div><b>FIBA</b><span>Runs international competitions and the world rules.</span></div></div><div class="pc"><i>N</i><div><b>NBA</b><span>The most famous pro league in the world.</span></div></div><div class="pc"><i>P</i><div><b>PBA</b><span>The pro league of the Philippines, where basketball is a national passion.</span></div></div></div></section>
+    <section id="basketball-start"><h2><span>03</span>Get started</h2><div class="sts"><div class="st"><u>01</u><b>Learn the basics</b><p>Dribbling, passing, shooting and defense. Practice each one slowly first.</p></div><div class="st"><u>02</u><b>Practice shooting form</b><p>Eyes on the hoop, elbow under the ball, follow through with a flick of the wrist.</p></div><div class="st"><u>03</u><b>Play small games</b><p>1-on-1 or 3-on-3 helps you learn faster than only running drills.</p></div><div class="st"><u>04</u><b>Watch and learn</b><p>Watching games teaches spacing, teamwork and decision making.</p></div></div></section>
+    <section id="basketball-rules"><h2><span>04</span>Rules</h2><ol class="rl"><li>Each team has 5 players on the court.</li><li>A game has 4 quarters: 10 minutes in FIBA, 12 minutes in the NBA. A tied game goes to overtime.</li><li>A normal basket is worth 2 points, a shot from behind the 3-point line is worth 3, and a free throw is worth 1.</li><li>You must dribble the ball when you move. Taking too many steps without dribbling is a travel, and stopping and starting again is a double dribble.</li><li>A team must shoot within 24 seconds (the shot clock).</li><li>Pushing, hitting or holding is a foul. Too many fouls and the player must leave the game (5 in FIBA, 6 in the NBA).</li><li>When the ball goes outside the lines, the other team gets it.</li><li>The hoop is 10 feet (3.05 meters) above the floor.</li></ol></section>
+  </div>
+</div>
+</article>
+<article class="lang" id="anime" style="--ac:#f472b6;--img:url('https://cdn-2.quibey.com/pfp/f878c011-aa70-40cc-969d-c46aca7443db-anime-guy-with-silver-hair-unique-anime-guy-pfp-4.png')">
+<header class="hero"><div class="hero-in">
+  <span class="pill">Hobby · Entertainment</span>
+  <h1>Anime</h1>
+  <p>Anime is animation made in Japan. It covers every kind of story: action, comedy, romance, sports, and deep stories about life.</p>
+  <div class="stats"><span><b>6</b> milestones</span><span><b>3</b> key names</span><span><b>4</b> steps</span></div>
+</div></header>
+<div class="layout">
+  <aside class="side"><button type="button" data-t="anime-history">History</button><button type="button" data-t="anime-people">Key people</button><button type="button" data-t="anime-start">Get started</button></aside>
+  <div class="content">
+    <section id="anime-history"><h2><span>01</span>History</h2><div class="tlw"><div class="ev"><em>1910s</em><p>The first Japanese animated films appear, short experiments made by early animators.</p></div><div class="ev"><em>1960s</em><p>Osamu Tezuka, often called the “God of Manga”, helps shape the style with Astro Boy, which started on TV in 1963.</p></div><div class="ev"><em>1985</em><p>Studio Ghibli is founded by Hayao Miyazaki and Isao Takahata, with producer Toshio Suzuki.</p></div><div class="ev"><em>1988</em><p>Akira shows the world that anime can be bold and cinematic.</p></div><div class="ev"><em>1990s</em><p>Series like Dragon Ball and Sailor Moon are watched around the world.</p></div><div class="ev"><em>2000s on</em><p>Streaming makes anime easy to watch anywhere, and it becomes a global culture.</p></div></div></section>
+    <section id="anime-people"><h2><span>02</span>Key people</h2><div class="pcs"><div class="pc"><i>O</i><div><b>Osamu Tezuka</b><span>Pioneer of modern manga and TV anime.</span></div></div><div class="pc"><i>H</i><div><b>Hayao Miyazaki</b><span>Director of Spirited Away and co-founder of Studio Ghibli.</span></div></div><div class="pc"><i>M</i><div><b>Manga artists</b><span>Many anime start as manga, the Japanese comics.</span></div></div></div></section>
+    <section id="anime-start"><h2><span>03</span>Get started</h2><div class="sts"><div class="st"><u>01</u><b>Pick a genre</b><p>Shonen (action), slice of life, sports, romance, fantasy, sci-fi. Start with what you already like.</p></div><div class="st"><u>02</u><b>Choose sub or dub</b><p>Sub keeps the Japanese voices with subtitles. Dub is dubbed in your language.</p></div><div class="st"><u>03</u><b>Use legal streaming</b><p>Official platforms support the creators who make the shows.</p></div><div class="st"><u>04</u><b>Look for the life values</b><p>Many anime teach friendship, hard work, never giving up and facing failure. That is why I like them.</p></div></div></section>
+    
+  </div>
+</div>
+</article>
+<article class="lang" id="webdesign" style="--ac:#a78bfa;--img:url('https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')">
+<header class="hero"><div class="hero-in">
+  <span class="pill">Hobby · Design</span>
+  <h1>Creative web design</h1>
+  <p>Creative web design is making websites that look good and feel good to use, with animations, colors and ideas that surprise people.</p>
+  <div class="stats"><span><b>6</b> milestones</span><span><b>4</b> key names</span><span><b>6</b> steps</span></div>
+</div></header>
+<div class="layout">
+  <aside class="side"><button type="button" data-t="webdesign-history">History</button><button type="button" data-t="webdesign-people">Key people</button><button type="button" data-t="webdesign-start">Get started</button></aside>
+  <div class="content">
+    <section id="webdesign-history"><h2><span>01</span>History</h2><div class="tlw"><div class="ev"><em>1991</em><p>Tim Berners-Lee puts the first website online at CERN. Pages were plain text with links.</p></div><div class="ev"><em>1994</em><p>Håkon Wium Lie proposes CSS, so style can be separated from content.</p></div><div class="ev"><em>1996</em><p>CSS1 becomes an official recommendation.</p></div><div class="ev"><em>Late 1990s</em><p>Flash animations make the web more playful, but need a plugin.</p></div><div class="ev"><em>2010</em><p>Ethan Marcotte names “responsive web design”: one site that fits every screen.</p></div><div class="ev"><em>2016</em><p>Figma launches (Dylan Field and Evan Wallace), making design tools run in the browser.</p></div></div></section>
+    <section id="webdesign-people"><h2><span>02</span>Key people</h2><div class="pcs"><div class="pc"><i>T</i><div><b>Tim Berners-Lee</b><span>Invented the World Wide Web.</span></div></div><div class="pc"><i>H</i><div><b>Håkon Wium Lie</b><span>Proposed CSS.</span></div></div><div class="pc"><i>E</i><div><b>Ethan Marcotte</b><span>Introduced responsive design.</span></div></div><div class="pc"><i>F</i><div><b>Figma team</b><span>Made design collaborative and online.</span></div></div></div></section>
+    <section id="webdesign-start"><h2><span>03</span>Get started</h2><div class="sts"><div class="st"><u>01</u><b>Start with an idea</b><p>Who is the page for? A gift, a portfolio, a card for a teacher. The idea comes first.</p></div><div class="st"><u>02</u><b>Sketch the layout</b><p>On paper or in Figma. Decide where the text and images go.</p></div><div class="st"><u>03</u><b>Pick colors and fonts</b><p>Use two or three colors and one or two fonts. Keep it simple.</p></div><div class="st"><u>04</u><b>Build with HTML, CSS and JavaScript</b><p>HTML for structure, CSS for style, JavaScript for motion.</p></div><div class="st"><u>05</u><b>Add animation carefully</b><p>Small movements feel nice. Too many are distracting.</p></div><div class="st"><u>06</u><b>Test on a phone</b><p>Most people will open it on their phone.</p></div></div><a class="go" href="language.html#html">Learn how to run HTML &rarr;</a></section>
+    
+  </div>
+</div>
+</article>
+<article class="lang" id="music" style="--ac:#1ed760;--img:url('data:image/jpeg;base64,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')">
+<header class="hero"><div class="hero-in">
+  <span class="pill">Hobby · Art</span>
+  <h1>Music</h1>
+  <p>Music is sound organized into rhythm, melody and harmony. I listen when I'm relaxing, studying or coding.</p>
+  <div class="stats"><span><b>8</b> milestones</span><span><b>3</b> key names</span><span><b>5</b> steps</span></div>
+</div></header>
+<div class="layout">
+  <aside class="side"><button type="button" data-t="music-history">History</button><button type="button" data-t="music-people">Key people</button><button type="button" data-t="music-start">Get started</button></aside>
+  <div class="content">
+    <section id="music-history"><h2><span>01</span>History</h2><div class="tlw"><div class="ev"><em>About 40,000 years ago</em><p>Some of the oldest known instruments, bone flutes, are made by early humans in what is now Germany.</p></div><div class="ev"><em>Ancient Greece</em><p>The word “music” comes from the Greek word for the arts of the Muses.</p></div><div class="ev"><em>About 1000s</em><p>Guido of Arezzo helps create the music staff, so songs can be written down and learned.</p></div><div class="ev"><em>1877</em><p>Thomas Edison invents the phonograph, the first machine to record and play back sound.</p></div><div class="ev"><em>1979</em><p>Sony releases the Walkman, and people start carrying music everywhere.</p></div><div class="ev"><em>1982</em><p>The compact disc (CD) is released.</p></div><div class="ev"><em>2001</em><p>Apple launches the iPod, and digital music takes off.</p></div><div class="ev"><em>2008</em><p>Spotify launches in Sweden, created by Daniel Ek and Martin Lorentzon.</p></div></div></section>
+    <section id="music-people"><h2><span>02</span>Key people</h2><div class="pcs"><div class="pc"><i>G</i><div><b>Guido of Arezzo</b><span>Helped develop music notation.</span></div></div><div class="pc"><i>T</i><div><b>Thomas Edison</b><span>Invented the phonograph.</span></div></div><div class="pc"><i>D</i><div><b>Daniel Ek and Martin Lorentzon</b><span>Founded Spotify.</span></div></div></div></section>
+    <section id="music-start"><h2><span>03</span>Get started</h2><div class="sts"><div class="st"><u>01</u><b>Build playlists</b><p>One for studying, one for coding, one for relaxing. Music changes your mood.</p></div><div class="st"><u>02</u><b>Listen with attention</b><p>Try to hear each instrument and the lyrics, not just the beat.</p></div><div class="st"><u>03</u><b>Try an instrument</b><p>Guitar, keyboard or ukulele are good starts. Learn a few chords first.</p></div><div class="st"><u>04</u><b>Learn the basics</b><p>Beat, rhythm, melody and harmony are the four ideas behind most songs.</p></div><div class="st"><u>05</u><b>Share what you love</b><p>Songs are better when you share them.</p></div></div></section>
+    
+  </div>
+</div>
+</article>
+<article class="lang" id="rubiks" style="--ac:#facc15;--img:url('https://a.allegroimg.com/original/1186ab/64e06f784b9dbf3ba6a0d94637cf/KOSTKA-RUBIKA-ORYGINALNA-RUBIK-S-KLASYCZNA-3X3-Stan-opakowania-oryginalne')">
+<header class="hero"><div class="hero-in">
+  <span class="pill">Hobby · Puzzle and sport</span>
+  <h1>Rubik's Cube</h1>
+  <p>The Rubik's Cube is a 3×3×3 twisting puzzle. The goal is to make each of the six faces a single color.</p>
+  <div class="stats"><span><b>6</b> milestones</span><span><b>3</b> key names</span><span><b>5</b> steps</span><span><b>7</b> rules</span></div>
+</div></header>
+<div class="layout">
+  <aside class="side"><button type="button" data-t="rubiks-history">History</button><button type="button" data-t="rubiks-people">Key people</button><button type="button" data-t="rubiks-start">Get started</button><button type="button" data-t="rubiks-rules">Rules</button></aside>
+  <div class="content">
+    <section id="rubiks-history"><h2><span>01</span>History</h2><div class="tlw"><div class="ev"><em>1974</em><p>Ernő Rubik, a Hungarian architecture professor in Budapest, invents the cube. He called it the Magic Cube.</p></div><div class="ev"><em>1980</em><p>The toy is sold worldwide as Rubik's Cube.</p></div><div class="ev"><em>1982</em><p>The first World Championship is held in Budapest.</p></div><div class="ev"><em>2003</em><p>The World Cube Association (WCA) is founded to run speedcubing competitions.</p></div><div class="ev"><em>2010</em><p>Computers prove that any scramble can be solved in 20 moves or fewer.</p></div><div class="ev"><em>Today</em><p>The best speedcubers solve it in under 4 seconds.</p></div></div></section>
+    <section id="rubiks-people"><h2><span>02</span>Key people</h2><div class="pcs"><div class="pc"><i>E</i><div><b>Ernő Rubik</b><span>Inventor of the cube.</span></div></div><div class="pc"><i>W</i><div><b>WCA</b><span>Organizes official speedcubing and sets the rules.</span></div></div><div class="pc"><i>S</i><div><b>Speedcubers</b><span>People who solve the cube as fast as they can.</span></div></div></div></section>
+    <section id="rubiks-start"><h2><span>03</span>Get started</h2><div class="sts"><div class="st"><u>01</u><b>Learn the notation</b><p>R, L, U, D, F, B mean turning the right, left, up, down, front and back faces clockwise. A ' means counter-clockwise, and a 2 means turn twice.</p></div><div class="st"><u>02</u><b>Solve the first layer</b><p>Make a white cross, then place the white corners.</p></div><div class="st"><u>03</u><b>Solve the middle layer</b><p>Move the four edge pieces into place.</p></div><div class="st"><u>04</u><b>Solve the last layer</b><p>Make the yellow cross, place the corners, then orient them.</p></div><div class="st"><u>05</u><b>Practice</b><p>Use the same steps again and again. Speed comes from repetition.</p></div></div></section>
+    <section id="rubiks-rules"><h2><span>04</span>Rules</h2><ol class="rl"><li>The cube has 6 faces. Each face should end up as one solid color.</li><li>In WCA competitions, you get 15 seconds to inspect the scrambled cube before solving.</li><li>The timer starts when you lift your hands and stops when you touch it again.</li><li>You can only turn the cube with your hands. You cannot take it apart.</li><li>If the cube is not solved at the end, the result is a DNF (did not finish).</li><li>Small misalignments at the end can add a 2-second penalty.</li><li>Competitors solve the same scramble, and your average of five solves is often what counts.</li></ol></section>
+  </div>
+</div>
+</article>
+<article class="lang" id="chess" style="--ac:#e5e7eb;--img:url('https://images.unsplash.com/photo-1586165368502-1bad197a6461?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')">
+<header class="hero"><div class="hero-in">
+  <span class="pill">Hobby · Mind sport</span>
+  <h1>Chess</h1>
+  <p>Chess is a two-player strategy game on a board of 64 squares. The goal is to checkmate the other player's king.</p>
+  <div class="stats"><span><b>7</b> milestones</span><span><b>3</b> key names</span><span><b>5</b> steps</span><span><b>8</b> rules</span></div>
+</div></header>
+<div class="layout">
+  <aside class="side"><button type="button" data-t="chess-history">History</button><button type="button" data-t="chess-people">Key people</button><button type="button" data-t="chess-start">Get started</button><button type="button" data-t="chess-rules">Rules</button></aside>
+  <div class="content">
+    <section id="chess-history"><h2><span>01</span>History</h2><div class="tlw"><div class="ev"><em>About 6th century</em><p>A game called chaturanga is played in India. It is the ancestor of chess.</p></div><div class="ev"><em>Around 600s</em><p>The game spreads to Persia as shatranj, and later across the Arab world.</p></div><div class="ev"><em>Around 1000</em><p>Chess reaches Europe.</p></div><div class="ev"><em>Around 1475</em><p>The modern rules appear, with the powerful queen and bishop.</p></div><div class="ev"><em>1886</em><p>Wilhelm Steinitz becomes the first official World Chess Champion.</p></div><div class="ev"><em>1924</em><p>FIDE, the international chess federation, is founded.</p></div><div class="ev"><em>1997</em><p>IBM's Deep Blue beats world champion Garry Kasparov in a match.</p></div></div></section>
+    <section id="chess-people"><h2><span>02</span>Key people</h2><div class="pcs"><div class="pc"><i>W</i><div><b>Wilhelm Steinitz</b><span>First official World Champion.</span></div></div><div class="pc"><i>F</i><div><b>FIDE</b><span>Runs international chess and the rules.</span></div></div><div class="pc"><i>G</i><div><b>Garry Kasparov</b><span>World champion who played Deep Blue.</span></div></div></div></section>
+    <section id="chess-start"><h2><span>03</span>Get started</h2><div class="sts"><div class="st"><u>01</u><b>Set up the board</b><p>Each player starts with 16 pieces. The board must have a white square at each player's right-hand corner. The queen goes on her own color.</p></div><div class="st"><u>02</u><b>Learn how pieces move</b><p>Practice each piece one at a time.</p></div><div class="st"><u>03</u><b>Control the center</b><p>Use your pawns and knights to take the middle squares early.</p></div><div class="st"><u>04</u><b>Develop your pieces</b><p>Move knights and bishops out before moving the same piece twice.</p></div><div class="st"><u>05</u><b>Protect your king</b><p>Castle early, then look for your opponent's mistakes.</p></div></div></section>
+    <section id="chess-rules"><h2><span>04</span>Rules</h2><ol class="rl"><li>Each player has 1 king, 1 queen, 2 rooks, 2 bishops, 2 knights and 8 pawns. White moves first, then players take turns.</li><li>The king moves one square in any direction. The queen moves any number of squares in any direction.</li><li>The rook moves in straight lines. The bishop moves diagonally. The knight moves in an L shape and can jump over pieces.</li><li>The pawn moves forward one square (two on its first move) and captures diagonally.</li><li>A pawn that reaches the other end is promoted, usually into a queen.</li><li>Special moves: castling (king and rook move together) and en passant (a special pawn capture).</li><li>Check means the king is attacked. Checkmate means it cannot escape, and the game ends.</li><li>The game is a draw by stalemate (no legal move but not in check), agreement, or repeating positions.</li></ol></section>
+  </div>
+</div>
+</article>
+
+<script>
+var NAMES={"coding":"Coding","basketball":"Basketball","anime":"Anime","webdesign":"Creative web design","music":"Music","rubiks":"Rubik's Cube","chess":"Chess"};
+function cur(){var id=location.hash.slice(1).toLowerCase();return NAMES[id]?id:"coding"}
+function show(){
+  var id=cur();
+  document.querySelectorAll(".lang").forEach(function(a){a.classList.toggle("on",a.id===id)});
+  document.title=NAMES[id]+" | Ian Argao";
+  window.scrollTo(0,0);spy();
+}
+function spy(){
+  var a=document.querySelector(".lang.on");if(!a)return;
+  var secs=a.querySelectorAll(".content section"),on=null;
+  secs.forEach(function(s){if(s.getBoundingClientRect().top<160)on=s.id});
+  a.querySelectorAll(".side button").forEach(function(b,i){b.classList.toggle("on",on?b.dataset.t===on:i===0)});
+}
+document.addEventListener("click",function(e){
+  var b=e.target.closest(".side button");if(!b)return;
+  var t=document.getElementById(b.dataset.t);if(t)t.scrollIntoView({behavior:"smooth",block:"start"});
+});
+window.addEventListener("scroll",spy,{passive:true});
+window.addEventListener("hashchange",show);
+show();
+</script>
+</body>
+</html>
