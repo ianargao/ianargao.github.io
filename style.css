@@ -616,3 +616,139 @@ a.tool:focus-visible{
     z-index:2;
   }
 }
+
+/* =========================================================
+   ABOUT SECTION — DARKER, SUBTLE BORDERS
+   Keeps the existing layout, glow, and colors.
+========================================================= */
+.about-new-design .about-profile img{
+  border-color:rgba(255,255,255,.16);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.45),
+    0 0 40px rgba(255,160,50,.16);
+}
+.about-new-design .about-card{
+  border-color:rgba(255,255,255,.12);
+}
+.about-new-design .about-card h2{
+  border-bottom-color:rgba(255,255,255,.10);
+}
+.about-new-design .about-quote{
+  border-color:rgba(255,255,255,.12);
+  background:rgba(245,158,11,.055);
+}
+@media (max-width:600px){
+  .about-new-design .about-profile img{border-color:rgba(255,255,255,.14)}
+  .about-new-design .about-card{border-color:rgba(255,255,255,.10)}
+  .about-new-design .about-card h2{border-bottom-color:rgba(255,255,255,.08)}
+  .about-new-design .about-quote{border-color:rgba(255,255,255,.10)}
+}
+
+
+/* FINAL ABOUT BORDER OVERRIDE */
+#about .about-new-design,
+#about .about-card,
+#about .about-profile img,
+#about .about-card h2,
+#about .about-quote,
+#about .info-card,
+#about .focus-card,
+#about .info-item,
+#about .focus-item,
+#about .basic-info,
+#about .current-focus {
+  border-color: rgba(255,255,255,.07) !important;
+}
+
+#about .about-new-design {
+  border: 1px solid rgba(255,255,255,.08) !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,.55) !important;
+}
+
+#about .about-profile img {
+  border: 1px solid rgba(255,255,255,.08) !important;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.35),
+    0 0 28px rgba(0,0,0,.38) !important;
+}
+
+#about .about-card {
+  border: 1px solid rgba(255,255,255,.07) !important;
+  box-shadow: 0 12px 36px rgba(0,0,0,.5) !important;
+}
+
+#about .about-card h2 {
+  border-bottom: 1px solid rgba(255,255,255,.07) !important;
+}
+
+#about .about-quote {
+  border: 1px solid rgba(255,255,255,.08) !important;
+  background: rgba(255,255,255,.015) !important;
+}
+
+#about .about-card:hover,
+#about .info-card:hover,
+#about .focus-card:hover,
+#about .info-item:hover,
+#about .focus-item:hover {
+  border-color: rgba(255,255,255,.10) !important;
+}
+
+/* =========================================================
+   ABOUT — FORCE DARKER BORDERS FOR THE ACTUAL BLUE NEON DESIGN
+   The About layout is styled in index.html, so these !important
+   overrides intentionally win over those inline style rules.
+========================================================= */
+#about .about-exact{
+  border-color:rgba(255,255,255,.10) !important;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.55) inset,
+    0 25px 80px rgba(0,0,0,.45),
+    0 0 28px rgba(0,0,0,.16) !important;
+}
+
+#about .about-photo-frame{
+  border-color:rgba(255,255,255,.10) !important;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.55) inset,
+    0 0 22px rgba(0,0,0,.22) !important;
+}
+
+#about .about-exact-quote{
+  border-color:rgba(255,255,255,.10) !important;
+  box-shadow:0 0 18px rgba(0,0,0,.18), inset 0 0 14px rgba(0,0,0,.10) !important;
+}
+
+#about .about-info-card{
+  border-color:rgba(255,255,255,.08) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.015) !important;
+}
+
+#about .about-info-row,
+#about .about-focus-row{
+  border:1px solid rgba(255,255,255,.045) !important;
+}
+
+#about .about-eyebrow i{
+  background:rgba(255,255,255,.10) !important;
+}
+
+#about .about-corner{
+  border-top-color:rgba(255,255,255,.10) !important;
+  filter:none !important;
+}
+
+#about .about-corner::after{
+  background:rgba(255,255,255,.10) !important;
+  box-shadow:none !important;
+}
+
+#about .about-mini-line span{
+  background:rgba(255,255,255,.10) !important;
+  box-shadow:none !important;
+}
+
+#about .about-exact::before{
+  background:rgba(255,255,255,.10) !important;
+  box-shadow:none !important;
+}

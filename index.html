@@ -66,11 +66,25 @@
     /* Elegant contact section */
     #contact .contact-modern {
       display:grid;
-      grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
-      gap:70px;
+      grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+      gap:76px;
       align-items:center;
+      max-width:1080px;
+      margin:0 auto;
     }
-    #contact .contact-intro { padding:10px 0; }
+    #contact .contact-intro { padding:10px 0; position:relative; }
+    #contact .contact-intro::before {
+      content:"";
+      position:absolute;
+      width:260px;
+      height:260px;
+      left:-70px;
+      top:50%;
+      transform:translateY(-50%);
+      background:radial-gradient(circle,rgba(255,255,255,.065),rgba(255,255,255,0) 70%);
+      pointer-events:none;
+      z-index:-1;
+    }
     #contact .contact-label {
       display:inline-block; margin-bottom:18px;
       font-family:"Space Grotesk",sans-serif; font-size:11px; font-weight:600;
@@ -80,9 +94,12 @@
       margin:0 0 20px; font-family:"Space Grotesk",sans-serif;
       font-size:clamp(42px,5vw,68px); line-height:.98; letter-spacing:-2.5px;
     }
-    #contact .contact-intro h2 span { color:#8ab4ff; }
+    #contact .contact-intro h2 span { color:#f2f2f2; }
     #contact .contact-intro .sub { max-width:390px; margin:0; font-size:15px; line-height:1.8; color:#8c8c8c; }
-    #contact .contact-line { width:55px; height:1px; margin:32px 0; background:rgba(255,255,255,.25); }
+    #contact .contact-line { width:55px; height:1px; margin:27px 0 20px; background:rgba(255,255,255,.25); }
+    #contact .contact-status { display:flex; flex-direction:column; gap:7px; margin-bottom:22px; font-family:"Space Grotesk",sans-serif; font-size:11px; letter-spacing:.3px; color:#777; }
+    #contact .contact-status span { display:flex; align-items:center; gap:9px; }
+    #contact .contact-status i { font-size:7px; color:#bdbdbd; }
     #contact .social { display:flex; gap:10px; flex-wrap:wrap; }
     #contact .social a {
       width:44px; height:44px; display:flex; align-items:center; justify-content:center;
@@ -92,14 +109,18 @@
     }
     #contact .social a:hover { transform:translateY(-4px); border-color:rgba(138,180,255,.6); background:rgba(138,180,255,.08); color:#8ab4ff; }
     #contact .contact-form-card {
-      padding:34px; border:1px solid rgba(255,255,255,.10); border-radius:24px;
+      width:100%;
+      max-width:540px;
+      justify-self:end;
+      box-sizing:border-box;
+      padding:30px; border:1px solid rgba(255,255,255,.10); border-radius:22px;
       background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
       box-shadow:0 25px 70px rgba(0,0,0,.28); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
     }
-    #contact .form-heading { display:flex; align-items:center; gap:12px; margin-bottom:28px; }
+    #contact .form-heading { display:flex; align-items:center; gap:12px; margin-bottom:25px; }
     #contact .form-heading span { font-family:"Space Grotesk",sans-serif; font-size:11px; letter-spacing:2px; color:#777; }
     #contact .form-heading h3 { margin:0; font-family:"Space Grotesk",sans-serif; font-size:18px; font-weight:500; color:#f2f2f2; }
-    #contact #cf { display:flex; flex-direction:column; gap:20px; }
+    #contact #cf { display:flex; flex-direction:column; gap:18px; }
     #contact .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
     #contact .form-group { display:flex; flex-direction:column; gap:8px; }
     #contact .form-group label { font-family:"Space Grotesk",sans-serif; font-size:11px; letter-spacing:1px; color:#777; }
@@ -113,9 +134,9 @@
     #contact #cf input::placeholder,#contact #cf textarea::placeholder { color:#666; }
     #contact #cf input:focus,#contact #cf textarea:focus { border-color:rgba(138,180,255,.55); background:rgba(255,255,255,.035); box-shadow:0 0 0 3px rgba(138,180,255,.06); }
     #contact .contact-send {
-      width:100%; min-height:52px; display:flex; align-items:center; justify-content:space-between;
-      margin-top:2px; padding:0 18px; border:1px solid rgba(255,255,255,.12); border-radius:12px;
-      background:#f1f1f1; color:#090909; font-family:"Space Grotesk",sans-serif; font-size:13px; font-weight:500;
+      width:100%; height:42px; min-height:42px; display:flex; align-items:center; justify-content:space-between;
+      margin-top:1px; padding:0 14px; border:1px solid rgba(255,255,255,.12); border-radius:10px;
+      background:#f1f1f1; color:#090909; font-family:"Space Grotesk",sans-serif; font-size:12px; font-weight:500;
       cursor:pointer; transition:transform .25s ease,background .25s ease;
     }
     #contact .contact-send i { font-size:18px; }
@@ -125,14 +146,14 @@
       #contact .contact-intro h2 { font-size:clamp(42px,14vw,58px); letter-spacing:-2px; }
       #contact .contact-intro .sub { max-width:100%; font-size:14px; }
       #contact .contact-line { margin:25px 0; }
-      #contact .contact-form-card { padding:24px 20px; border-radius:20px; }
+      #contact .contact-form-card { padding:24px 20px; border-radius:20px; max-width:none; }
       #contact .form-row { grid-template-columns:1fr; gap:20px; }
       #contact #cf { gap:18px; }
       #contact #cf input { height:50px; }
       #contact #cf textarea { min-height:135px; }
     }
     @media (max-width:420px) {
-      #contact .contact-form-card { padding:22px 16px; }
+      #contact .contact-form-card { padding:22px 16px; max-width:none; }
       #contact .social a { width:42px; height:42px; }
     }
   </style>
@@ -694,9 +715,1435 @@
 }
 </style>
 
+
+
+
+
+
+
+
+<style id="about-all-blue-dark-final">
+/* About section: turn the visible blue accents into a much darker navy tone. */
+.about-exact {
+  border-color: rgba(15, 30, 52, .88) !important;
+  box-shadow: 0 0 0 1px rgba(5,12,22,.72) inset, 0 25px 80px rgba(0,0,0,.48) !important;
+}
+.about-exact::before {
+  background: linear-gradient(90deg, rgba(12,38,68,.18), rgba(15,28,52,.06)) !important;
+}
+.about-photo-frame {
+  border-color: rgba(17, 35, 58, .92) !important;
+  background: rgba(3,8,15,.94) !important;
+  box-shadow: 0 0 0 1px rgba(4,12,22,.72) inset, 0 0 18px rgba(0,0,0,.28) !important;
+}
+.about-photo-frame::before {
+  box-shadow: inset 0 0 24px rgba(8,25,44,.10) !important;
+}
+.about-corner {
+  border-top-color: rgba(24, 55, 86, .72) !important;
+  filter: none !important;
+}
+.about-corner::after {
+  background: rgba(24, 55, 86, .72) !important;
+  box-shadow: none !important;
+}
+.about-signature {
+  color: #35506f !important;
+  text-shadow: 0 0 8px rgba(30,60,90,.20) !important;
+}
+.about-eyebrow { color: #9eabc0 !important; }
+.about-eyebrow i {
+  background: linear-gradient(90deg, rgba(30,54,82,.65), rgba(30,54,82,.08)) !important;
+}
+.about-exact-content h2 b {
+  background: linear-gradient(90deg, #49657f, #53627a, #5b526f) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+.about-exact-quote {
+  border-color: rgba(25, 40, 63, .90) !important;
+  background: linear-gradient(100deg, rgba(10,22,40,.72), rgba(18,12,40,.68)) !important;
+  box-shadow: inset 0 0 14px rgba(0,0,0,.16) !important;
+}
+.quote-mark { color: #52667d !important; }
+.about-info-card {
+  border-color: rgba(22, 38, 60, .84) !important;
+  background: linear-gradient(145deg, rgba(6,15,28,.90), rgba(5,11,22,.84)) !important;
+}
+.about-info-title i,
+.about-info-row > i,
+.about-focus-row > i {
+  color: #4b6078 !important;
+  filter: none !important;
+}
+.about-info-row,
+.about-focus-row {
+  border: 1px solid rgba(19, 36, 58, .72) !important;
+  background: linear-gradient(90deg, rgba(18,34,57,.66), rgba(12,25,44,.58)) !important;
+}
+.about-exact-section::before {
+  border-color: rgba(28,48,72,.10) !important;
+}
+.about-exact-section::after {
+  border-color: rgba(45,28,72,.10) !important;
+}
+.about-mini-line span {
+  background: linear-gradient(90deg, #284662 0 62%, #40375f 62%) !important;
+  box-shadow: none !important;
+}
+</style>
+
+
+<style id="rounded-profile-flip">
+/* Rounded profile photo + flip transition */
+.hero .photo{
+  border-radius:50% !important;
+  overflow:hidden !important;
+  perspective:1000px;
+  transform-style:preserve-3d;
+  border:1px solid rgba(255,255,255,.18) !important;
+  box-shadow:0 0 35px rgba(214,170,90,.16), 0 0 80px rgba(214,170,90,.06) !important;
+}
+
+.hero .photo img{
+  border-radius:50% !important;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+
+.hero .photo.flip-effect{
+  animation:profileFlip .9s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes profileFlip{
+  0%{transform:rotateY(0deg) scale(1)}
+  45%{transform:rotateY(90deg) scale(.96)}
+  100%{transform:rotateY(0deg) scale(1)}
+}
+
+@media (max-width:700px){
+  .hero .photo{
+    border-radius:50% !important;
+  }
+}
+</style>
+
+
+
+<style id="about-profile-rounded-flip">
+/* Rounded profile photo + 3D flip effect */
+.about-photo-frame{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+}
+
+.about-flip-card{
+  width:min(330px, 92%);
+  aspect-ratio:1 / 1;
+  perspective:1200px;
+  outline:none;
+}
+
+.about-flip-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  transform-style:preserve-3d;
+  transition:transform .85s cubic-bezier(.2,.75,.25,1);
+}
+
+.about-flip-card:hover .about-flip-inner,
+.about-flip-card:focus .about-flip-inner{
+  transform:rotateY(180deg);
+}
+
+.about-flip-face{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  overflow:hidden;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  border:3px solid rgba(255,255,255,.78);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.12),
+    0 0 28px rgba(255,190,90,.24),
+    0 18px 45px rgba(0,0,0,.42);
+  background:#10131a;
+}
+
+.about-flip-face img{
+  width:100% !important;
+  height:100% !important;
+  display:block !important;
+  object-fit:cover !important;
+  border-radius:50% !important;
+}
+
+.about-flip-back{
+  transform:rotateY(180deg);
+}
+
+.about-flip-face .about-signature{
+  z-index:2;
+}
+
+@media(max-width:700px){
+  .about-flip-card{
+    width:min(285px, 82vw);
+  }
+}
+</style>
+
+
+
+<style id="ianargao-boot-intro">
+  /* IANARGAO boot intro — Render-inspired line/ASCII lettering */
+  #ian-boot-intro{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:#111;
+    color:#d8d8d8;
+    opacity:1;
+    visibility:visible;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  #ian-boot-intro.is-done{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  #ian-boot-intro::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:80px 80px;
+    mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 82%,transparent 100%);
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 82%,transparent 100%);
+  }
+  #ian-boot-intro::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.055),transparent 42%);
+    pointer-events:none;
+  }
+  .ian-boot-wrap{
+    position:relative;
+    width:min(1100px,92vw);
+    text-align:center;
+  }
+  .ian-boot-status{
+    margin:0 0 22px;
+    font:500 11px/1.4 "Courier New",monospace;
+    letter-spacing:.28em;
+    color:#777;
+    text-transform:uppercase;
+  }
+  .ian-boot-name{
+    position:relative;
+    width:100%;
+    margin:auto;
+  }
+  .ian-boot-name svg{
+    display:block;
+    width:100%;
+    height:auto;
+    overflow:visible;
+  }
+  .ian-boot-name .ian-text{
+    font-family:"Courier New",monospace;
+    font-size:116px;
+    font-weight:700;
+    letter-spacing:3px;
+    text-anchor:middle;
+    dominant-baseline:middle;
+  }
+  /* Outer technical contour */
+  .ian-boot-outline{
+    fill:none;
+    stroke:#777;
+    stroke-width:1.1;
+    stroke-dasharray:1.5 5 16 4;
+    stroke-linecap:round;
+    animation:ianDash 2.7s linear infinite;
+  }
+  /* Fine second contour, like the layered linework in the reference */
+  .ian-boot-outline2{
+    fill:none;
+    stroke:#e6e6e6;
+    stroke-width:.55;
+    stroke-dasharray:1 8 26 7;
+    stroke-linecap:round;
+    opacity:.48;
+    animation:ianDashReverse 3.8s linear infinite;
+  }
+  /* Moving linework clipped inside the letters */
+  .ian-boot-hatch{
+    fill:none;
+    stroke:#d9d9d9;
+    stroke-width:1.05;
+    stroke-dasharray:1.5 5 13 4;
+    stroke-linecap:round;
+    opacity:.82;
+    animation:ianHatchMove 2.4s linear infinite;
+  }
+  .ian-boot-hatch-fine{
+    fill:none;
+    stroke:#8e8e8e;
+    stroke-width:.65;
+    stroke-dasharray:1 7 18 6;
+    stroke-linecap:round;
+    opacity:.68;
+    animation:ianHatchMoveReverse 3.3s linear infinite;
+  }
+  /* Bright sweep passing through the word */
+  .ian-boot-fillline{
+    stroke:#fff;
+    stroke-width:1;
+    stroke-dasharray:55 520;
+    stroke-linecap:round;
+    opacity:.85;
+    animation:ianSweep 2.1s linear infinite;
+  }
+  .ian-boot-scan{
+    position:absolute;
+    left:6%;
+    right:6%;
+    top:50%;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#eee,transparent);
+    box-shadow:0 0 12px rgba(255,255,255,.3);
+    transform:translateY(-50%);
+    animation:ianScan 2.5s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .ian-boot-corner{
+    position:absolute;
+    width:26px;
+    height:26px;
+    border-color:#666;
+    border-style:solid;
+    opacity:.65;
+  }
+  .ian-boot-corner.a{left:0;top:0;border-width:1px 0 0 1px}
+  .ian-boot-corner.b{right:0;top:0;border-width:1px 1px 0 0}
+  .ian-boot-corner.c{left:0;bottom:0;border-width:0 0 1px 1px}
+  .ian-boot-corner.d{right:0;bottom:0;border-width:0 1px 1px 0}
+  .ian-boot-foot{
+    margin-top:24px;
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    align-items:center;
+    font:500 10px/1.4 "Courier New",monospace;
+    letter-spacing:.18em;
+    color:#666;
+    text-transform:uppercase;
+  }
+  .ian-boot-dot{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#aaa;
+    box-shadow:0 0 10px rgba(255,255,255,.45);
+    animation:ianPulse 1s ease-in-out infinite;
+  }
+  @keyframes ianDash{to{stroke-dashoffset:-120}}
+  @keyframes ianDashReverse{to{stroke-dashoffset:180}}
+  @keyframes ianHatchMove{from{transform:translateX(-42px)}to{transform:translateX(42px)}}
+  @keyframes ianHatchMoveReverse{from{transform:translateX(42px)}to{transform:translateX(-42px)}}
+  @keyframes ianSweep{from{stroke-dashoffset:600}to{stroke-dashoffset:-600}}
+  @keyframes ianScan{0%,100%{transform:translateY(-50%) scaleX(.65);opacity:.2}50%{transform:translateY(-50%) scaleX(1);opacity:.85}}
+  @keyframes ianPulse{0%,100%{opacity:.35}50%{opacity:1}}
+  @media(max-width:700px){
+    .ian-boot-name .ian-text{font-size:64px;letter-spacing:2px}
+    .ian-boot-status{font-size:9px;letter-spacing:.2em}
+    .ian-boot-foot{font-size:8px;letter-spacing:.12em}
+  }
+  @media(max-width:420px){
+    .ian-boot-name .ian-text{font-size:48px;letter-spacing:1px}
+  }
+</style>
+
+
+<style id="ian-nav-menu-upgrade">
+  /* Premium navigation + desktop/mobile burger menu */
+  nav{position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+  nav .wrap{position:relative}
+  .logo{position:relative;z-index:2;transition:opacity .2s ease,transform .2s ease}
+  .logo:hover{opacity:.82;transform:translateY(-1px)}
+
+  /* Keep the normal desktop links, while adding a burger on every viewport. */
+  .burger{
+    display:grid !important;
+    place-items:center;
+    width:42px;
+    height:42px;
+    padding:0;
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:12px;
+    background:rgba(255,255,255,.035);
+    color:#eee;
+    font-size:21px;
+    line-height:1;
+    transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+    position:relative;
+    z-index:1002;
+  }
+  .burger:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28);transform:translateY(-1px);box-shadow:0 8px 25px rgba(0,0,0,.28)}
+  .burger.active{background:#f2f2f2;color:#050505;border-color:#f2f2f2}
+  .burger i{transition:transform .25s ease}
+  .burger.active i{transform:rotate(90deg)}
+
+  .links{margin-left:auto;margin-right:18px}
+
+  .ian-menu-backdrop{
+    position:fixed;
+    inset:64px 0 0;
+    z-index:998;
+    background:rgba(0,0,0,.48);
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .25s ease,visibility .25s ease;
+  }
+  .ian-menu-backdrop.open{opacity:1;visibility:visible;pointer-events:auto}
+
+  .ian-menu-panel{
+    position:absolute;
+    top:14px;
+    right:clamp(16px,8vw,8%);
+    width:min(310px,calc(100vw - 32px));
+    padding:10px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:18px;
+    background:rgba(12,12,12,.94);
+    box-shadow:0 25px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.025) inset;
+    transform:translateY(-8px) scale(.98);
+    opacity:0;
+    transition:transform .25s ease,opacity .25s ease;
+  }
+  .ian-menu-backdrop.open .ian-menu-panel{transform:none;opacity:1}
+
+  .ian-menu-label{
+    padding:9px 12px 7px;
+    color:#666;
+    font:500 9px/1.3 "Space Grotesk",sans-serif;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+  }
+  .ian-menu-link{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    min-height:44px;
+    padding:0 12px;
+    border-radius:11px;
+    color:#d9d9d9;
+    font:500 13px/1 "Space Grotesk",sans-serif;
+    transition:background .2s ease,color .2s ease,transform .2s ease;
+  }
+  .ian-menu-link i{width:20px;text-align:center;font-size:18px;color:#8b8b8b}
+  .ian-menu-link:hover{background:rgba(255,255,255,.065);color:#fff;transform:translateX(2px)}
+  .ian-menu-link:hover i{color:#fff}
+  .ian-menu-divider{height:1px;background:rgba(255,255,255,.07);margin:8px 4px}
+  .ian-menu-link.back{color:#eee}
+  .ian-menu-link.back i{color:#ddd}
+  .ian-menu-link.intro{color:#f2f2f2;background:rgba(255,255,255,.035);margin-top:2px}
+  .ian-menu-link.intro i{color:#f2f2f2}
+  .ian-menu-link.intro:hover{background:rgba(255,255,255,.10)}
+
+  @media(max-width:820px){
+    nav .wrap{padding:0 16px}
+    .links{display:none !important}
+    .burger{width:40px;height:40px;border-radius:11px}
+    .ian-menu-backdrop{inset:64px 0 0}
+    .ian-menu-panel{top:10px;right:16px;left:16px;width:auto;border-radius:16px}
+    .ian-menu-link{min-height:48px;font-size:14px}
+  }
+  @media(min-width:821px){
+    .ian-menu-backdrop{inset:64px 0 0}
+  }
+</style>
+
+
+<style id="about-prestige-redesign">
+/* About redesign — clean editorial layout inspired by the supplied reference.
+   The reveal completes and stays visible until the page is refreshed. */
+.about-prestige-section{
+  position:relative;
+  padding:72px 0 90px;
+  overflow:hidden;
+  background:#070707;
+}
+.about-prestige-section::before,
+.about-prestige-section::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:50%;
+  pointer-events:none;
+}
+.about-prestige-section::before{left:-410px;top:120px;}
+.about-prestige-section::after{right:-410px;bottom:-120px;}
+.about-prestige-wrap{
+  width:min(1120px,calc(100% - 36px));
+  margin:0 auto;
+}
+.about-prestige-card{
+  position:relative;
+  min-height:570px;
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);
+  align-items:center;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(18,18,18,.96),rgba(8,8,8,.98));
+  box-shadow:0 30px 90px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.04);
+}
+.about-prestige-card::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border:1px solid rgba(255,255,255,.045);
+  border-radius:11px;
+  pointer-events:none;
+}
+.about-prestige-copy{
+  position:relative;
+  z-index:2;
+  padding:70px 35px 65px 72px;
+  opacity:0;
+  transform:translateY(18px);
+  animation:aboutPrestigeCopy 1.05s cubic-bezier(.2,.75,.25,1) .15s forwards;
+}
+.about-prestige-kicker{
+  margin-bottom:25px;
+  color:#a7a7a7;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.24em;
+}
+.about-prestige-kicker::after{
+  content:"";
+  display:inline-block;
+  width:95px;
+  height:1px;
+  margin-left:15px;
+  vertical-align:middle;
+  background:rgba(255,255,255,.22);
+}
+.about-prestige-copy h2{
+  margin:0 0 28px;
+  color:#f4f4f4;
+  font-size:clamp(54px,7vw,86px);
+  line-height:.86;
+  letter-spacing:-.055em;
+  font-weight:500;
+}
+.about-prestige-copy h2 em{
+  color:#f1f1f1;
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:400;
+  letter-spacing:-.045em;
+}
+.about-prestige-intro,.about-prestige-body{
+  max-width:560px;
+  margin:0;
+  color:#d2d2d2;
+  font-size:14px;
+  line-height:1.78;
+}
+.about-prestige-body{
+  color:#c7c7c7;
+}
+.about-prestige-quote{
+  display:flex;
+  gap:12px;
+  max-width:570px;
+  margin:27px 0 19px;
+  padding:16px 0 16px 17px;
+  border-left:2px solid rgba(255,255,255,.68);
+}
+.about-prestige-quote-mark{
+  color:#e9e9e9;
+  font-family:Georgia,serif;
+  font-size:37px;
+  line-height:.7;
+}
+.about-prestige-quote p{
+  margin:0;
+  color:#f3f3f3;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:17px;
+  line-height:1.5;
+  font-style:italic;
+}
+.about-prestige-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  margin-top:34px;
+  padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+.about-prestige-meta span{display:block;min-width:150px;}
+.about-prestige-meta b{display:block;color:#ededed;font-size:11px;font-weight:600;}
+.about-prestige-meta small{display:block;margin-top:5px;color:#777;font-size:9px;line-height:1.5;}
+.about-prestige-visual{
+  position:relative;
+  min-height:570px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  opacity:0;
+  transform:translateX(24px);
+  animation:aboutPrestigePhoto 1.15s cubic-bezier(.2,.75,.25,1) .28s forwards;
+}
+.about-prestige-photo-glow{
+  position:absolute;
+  width:330px;
+  height:330px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,220,165,.20) 0%,rgba(255,255,255,.07) 35%,transparent 70%);
+  filter:blur(12px);
+}
+.about-prestige-photo{
+  position:relative;
+  z-index:2;
+  width:min(340px,72%);
+  aspect-ratio:1/1.18;
+  overflow:hidden;
+  border-radius:48% 48% 43% 43%;
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 0 0 8px rgba(255,255,255,.025),0 0 55px rgba(255,218,168,.18),0 30px 60px rgba(0,0,0,.5);
+  background:#111;
+}
+.about-prestige-photo img{
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+}
+.about-prestige-signature{
+  position:absolute;
+  z-index:3;
+  right:12%;
+  bottom:16%;
+  color:#f0f0f0;
+  font:400 45px/1 "Brush Script MT","Segoe Script",cursive;
+  transform:rotate(-8deg);
+  text-shadow:0 0 20px rgba(255,255,255,.25);
+}
+@keyframes aboutPrestigeCopy{to{opacity:1;transform:none;}}
+@keyframes aboutPrestigePhoto{to{opacity:1;transform:none;}}
+@media(max-width:800px){
+  .about-prestige-section{padding:42px 0 65px;}
+  .about-prestige-wrap{width:min(100% - 20px,600px);}
+  .about-prestige-card{grid-template-columns:1fr;min-height:0;border-radius:16px;}
+  .about-prestige-copy{order:2;padding:36px 28px 40px;}
+  .about-prestige-visual{order:1;min-height:370px;padding-top:25px;}
+  .about-prestige-photo{width:min(250px,62vw);}
+  .about-prestige-photo-glow{width:270px;height:270px;}
+  .about-prestige-signature{right:22%;bottom:10%;}
+  .about-prestige-copy h2{font-size:clamp(52px,16vw,74px);}
+}
+@media(max-width:480px){
+  .about-prestige-copy{padding:30px 22px 34px;}
+  .about-prestige-visual{min-height:330px;}
+  .about-prestige-photo{width:min(225px,66vw);}
+  .about-prestige-intro,.about-prestige-body{font-size:12px;line-height:1.75;}
+  .about-prestige-meta{gap:18px;margin-top:26px;}
+  .about-prestige-meta span{min-width:125px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .about-prestige-copy,.about-prestige-visual{opacity:1;transform:none;animation:none;}
+}
+</style>
+
+<style id="ian-final-theme-and-hobbies">
+/* =========================================================
+   IANARGAO FINAL VERSION — THEME + HOBBIES NAVIGATION
+   Uses the existing folder/assets and keeps the existing burger design.
+========================================================= */
+
+/* Hobbies stay hidden until the visitor selects Hobbies from the burger menu. */
+#hobbies { display:none !important; }
+body.ian-hobbies-open #hobbies { display:block !important; }
+
+/* Theme control inside the existing burger panel */
+.ian-menu-theme{
+  appearance:none;
+  -webkit-appearance:none;
+  width:100%;
+  min-height:44px;
+  padding:0 12px;
+  border:0;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#d9d9d9;
+  background:transparent;
+  font:500 13px/1 "Space Grotesk",sans-serif;
+  text-align:left;
+  cursor:pointer;
+  transition:background .2s ease,color .2s ease;
+}
+.ian-menu-theme > i{width:20px;text-align:center;font-size:18px;color:#d5d5d5}
+.ian-menu-theme:hover{background:rgba(255,255,255,.065);color:#fff}
+.ian-theme-switch{
+  margin-left:auto;
+  width:38px;
+  height:22px;
+  padding:2px;
+  box-sizing:border-box;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:99px;
+  background:rgba(255,255,255,.07);
+  display:flex;
+  align-items:center;
+  transition:background .25s ease,border-color .25s ease;
+}
+.ian-theme-switch span{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#d9d9d9;
+  display:block;
+  transform:translateX(0);
+  transition:transform .25s ease,background .25s ease;
+}
+html.light-mode .ian-menu-theme{color:#253047}
+html.light-mode .ian-menu-theme > i{color:#3e5b87}
+html.light-mode .ian-theme-switch{background:#dce7ff;border-color:#b7c9ec}
+html.light-mode .ian-theme-switch span{transform:translateX(16px);background:#3e6fff}
+
+/* ---------------- LIGHT MODE ---------------- */
+html.light-mode body{
+  background:#f6f8fc !important;
+  color:#111827 !important;
+}
+html.light-mode nav{
+  background:rgba(246,248,252,.84) !important;
+  border-bottom-color:rgba(20,35,60,.10) !important;
+  box-shadow:0 8px 30px rgba(24,42,72,.05) !important;
+}
+html.light-mode nav .logo{color:#111827 !important}
+html.light-mode nav .logo span{color:#4f6fff !important}
+html.light-mode nav .links a{color:#5b6575 !important}
+html.light-mode nav .links a:hover,
+html.light-mode nav .links a.on{color:#111827 !important}
+html.light-mode .burger{
+  color:#111827 !important;
+  background:rgba(255,255,255,.72) !important;
+  border-color:rgba(20,35,60,.13) !important;
+}
+html.light-mode .hero{
+  background:
+    radial-gradient(circle at 78% 38%,rgba(93,112,255,.10),transparent 30%),
+    radial-gradient(circle at 25% 70%,rgba(70,154,255,.07),transparent 34%),
+    #f6f8fc !important;
+}
+html.light-mode .hero h1{color:#111827 !important}
+html.light-mode .hero .type{color:#4f6fff !important}
+html.light-mode .hero .mono{color:rgba(63,91,150,.10) !important}
+html.light-mode .hero .photo{
+  border-color:rgba(54,85,150,.24) !important;
+  box-shadow:0 0 35px rgba(80,101,180,.13),0 0 80px rgba(80,101,180,.06) !important;
+}
+html.light-mode .hero .btn:not(.solid){
+  color:#172033 !important;
+  border-color:rgba(23,32,51,.18) !important;
+  background:rgba(255,255,255,.65) !important;
+}
+html.light-mode .hero .btn.solid{
+  color:#fff !important;
+  background:linear-gradient(135deg,#566dff,#7359e8) !important;
+}
+html.light-mode section,
+html.light-mode footer{
+  color:#1c2638 !important;
+}
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode h4{color:#172033 !important}
+html.light-mode .sub,
+html.light-mode section p{color:#5f6b7d !important}
+
+/* About */
+html.light-mode .about-prestige-section{
+  background:linear-gradient(180deg,#f6f8fc,#eef2f8) !important;
+}
+html.light-mode .about-prestige-card{
+  background:rgba(255,255,255,.78) !important;
+  border-color:rgba(38,61,100,.12) !important;
+  box-shadow:0 25px 80px rgba(42,63,100,.09) !important;
+}
+html.light-mode .about-prestige-kicker{color:#5d6f8c !important}
+html.light-mode .about-prestige-copy h2{color:#172033 !important}
+html.light-mode .about-prestige-copy h2 em{color:#4d68e8 !important}
+html.light-mode .about-prestige-intro,
+html.light-mode .about-prestige-body{color:#586579 !important}
+html.light-mode .about-prestige-quote{
+  border-left-color:#6077ef !important;
+  background:rgba(92,113,238,.06) !important;
+}
+html.light-mode .about-prestige-quote p{color:#34415a !important}
+html.light-mode .about-prestige-meta{border-top-color:rgba(35,55,90,.10) !important}
+html.light-mode .about-prestige-meta b{color:#26334a !important}
+html.light-mode .about-prestige-meta small{color:#778398 !important}
+html.light-mode .about-prestige-photo{
+  border-color:rgba(71,96,163,.22) !important;
+  background:#fff !important;
+  box-shadow:0 18px 45px rgba(39,60,105,.12) !important;
+}
+html.light-mode .about-prestige-photo-glow{background:radial-gradient(circle,rgba(89,106,255,.18),transparent 68%) !important}
+html.light-mode .about-prestige-signature{color:#5669d7 !important}
+
+/* Skills */
+html.light-mode #skills{
+  background:#f2f5fa !important;
+}
+html.light-mode .tool{
+  background:rgba(255,255,255,.82) !important;
+  border-color:rgba(32,54,92,.10) !important;
+  color:#26334a !important;
+  box-shadow:0 10px 30px rgba(42,61,94,.05) !important;
+}
+html.light-mode .tool:hover{border-color:rgba(83,107,238,.35) !important;background:#fff !important}
+
+/* Projects */
+html.light-mode #projects{
+  background:#f6f8fc !important;
+}
+html.light-mode .card.proj{
+  border-color:rgba(31,52,89,.12) !important;
+  box-shadow:0 15px 40px rgba(32,52,88,.07) !important;
+}
+html.light-mode .card.proj::after{
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(13,25,48,.72)) !important;
+}
+html.light-mode .card.proj .pc > h3,
+html.light-mode .card.proj .pc > p,
+html.light-mode .card.proj .pc > i{color:#fff !important}
+
+/* Hobbies */
+html.light-mode #hobbies{
+  background:#eef2f8 !important;
+}
+html.light-mode .hobby-card{
+  border-color:rgba(32,54,92,.12) !important;
+  background:#fff !important;
+  box-shadow:0 15px 40px rgba(32,52,88,.07) !important;
+}
+html.light-mode .hobby-card h3{color:#172033 !important}
+html.light-mode .hobby-card p{color:#657186 !important}
+
+/* Contact */
+html.light-mode #contact{
+  background:#f6f8fc !important;
+}
+html.light-mode #contact .contact-label{color:#66758d !important}
+html.light-mode #contact .contact-intro h2,
+html.light-mode #contact .contact-intro h2 span{color:#172033 !important}
+html.light-mode #contact .contact-intro .sub{color:#657186 !important}
+html.light-mode #contact .contact-line{background:rgba(30,48,80,.16) !important}
+html.light-mode #contact .contact-status{color:#68758a !important}
+html.light-mode #contact .social a{
+  color:#34445f !important;
+  border-color:rgba(30,48,80,.13) !important;
+  background:rgba(255,255,255,.72) !important;
+}
+html.light-mode #contact .contact-form-card{
+  background:rgba(255,255,255,.82) !important;
+  border-color:rgba(30,48,80,.12) !important;
+  box-shadow:0 25px 70px rgba(30,48,80,.09) !important;
+}
+html.light-mode #contact .form-heading h3{color:#172033 !important}
+html.light-mode #contact .form-heading span,
+html.light-mode #contact .form-group label{color:#718096 !important}
+html.light-mode #contact #cf input,
+html.light-mode #contact #cf textarea{
+  background:#f8faff !important;
+  color:#172033 !important;
+  border-color:rgba(30,48,80,.12) !important;
+}
+html.light-mode #contact #cf input::placeholder,
+html.light-mode #contact #cf textarea::placeholder{color:#98a3b4 !important}
+html.light-mode #contact .contact-send{
+  background:linear-gradient(135deg,#566dff,#7359e8) !important;
+  color:#fff !important;
+  border-color:transparent !important;
+}
+
+/* Footer / back to top */
+html.light-mode footer{border-top-color:rgba(30,48,80,.08) !important;color:#758198 !important}
+html.light-mode .up{background:#fff !important;color:#25344e !important;border-color:rgba(30,48,80,.12) !important}
+
+/* Burger panel automatically follows the selected theme while retaining its layout. */
+html.light-mode .ian-menu-backdrop{background:rgba(22,32,50,.20) !important}
+html.light-mode .ian-menu-panel{
+  background:rgba(250,252,255,.96) !important;
+  border-color:rgba(30,48,80,.12) !important;
+  box-shadow:0 25px 70px rgba(30,48,80,.16),0 0 0 1px rgba(255,255,255,.72) inset !important;
+}
+html.light-mode .ian-menu-label{color:#8290a5 !important}
+html.light-mode .ian-menu-link{color:#33415a !important}
+html.light-mode .ian-menu-link i{color:#66758d !important}
+html.light-mode .ian-menu-link:hover{background:rgba(83,107,238,.08) !important;color:#1d2940 !important}
+html.light-mode .ian-menu-link:hover i{color:#4f68dc !important}
+html.light-mode .ian-menu-divider{background:rgba(30,48,80,.09) !important}
+html.light-mode .ian-menu-link.intro{background:rgba(83,107,238,.06) !important;color:#293753 !important}
+html.light-mode .ian-menu-link.intro i{color:#536bdc !important}
+
+@media(max-width:820px){
+  .ian-menu-theme{min-height:48px;font-size:14px}
+}
+</style>
+
+
+<style id="real-technology-icons">
+  .tools .tool > div {
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:38px !important;
+    height:38px !important;
+    margin-bottom:8px !important;
+  }
+  .tools .tool > div img,
+  .tools .tool img.real-tool-icon {
+    width:27px !important;
+    height:27px !important;
+    max-width:27px !important;
+    max-height:27px !important;
+    display:block !important;
+    object-fit:contain !important;
+    filter:none !important;
+    opacity:1 !important;
+  }
+  .tools .tool .fig {
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:38px !important;
+    height:38px !important;
+  }
+  .tools .tool .txt {
+    font-family:"Space Grotesk",sans-serif !important;
+    font-size:15px !important;
+    font-weight:700 !important;
+    color:#f5f5f5 !important;
+  }
+
+  .about-tech-use { margin-top:28px; }
+  .about-tech-label {
+    margin-bottom:12px;
+    color:#8e9aae;
+    font:700 9px/1.3 "Space Grotesk",sans-serif;
+    letter-spacing:.24em;
+  }
+  .about-tech-list {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .about-tech-pill {
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    min-height:30px;
+    padding:0 10px;
+    border:1px solid rgba(65,94,137,.55);
+    border-radius:9px;
+    background:rgba(16,31,55,.62);
+    color:#aebbd0;
+    font:500 9px/1 "Space Grotesk",sans-serif;
+    white-space:nowrap;
+    transition:border-color .2s ease,background .2s ease,transform .2s ease;
+  }
+  .about-tech-pill img {
+    width:14px !important;
+    height:14px !important;
+    object-fit:contain !important;
+    display:block !important;
+    filter:none !important;
+    opacity:1 !important;
+  }
+  .about-tech-pill:hover {
+    transform:translateY(-1px);
+    border-color:rgba(90,137,210,.8);
+    background:rgba(24,46,78,.78);
+  }
+  @media(max-width:800px){
+    .about-tech-use { margin-top:24px; }
+    .about-tech-list { gap:7px; }
+  }
+  @media(max-width:480px){
+    .about-tech-pill {
+      min-height:29px;
+      padding:0 9px;
+      font-size:8px;
+    }
+    .about-tech-pill img {
+      width:13px !important;
+      height:13px !important;
+    }
+  }
+</style>
+
+
+<style id="ian-about-and-skills-alignment">
+/* =========================================================
+   ABOUT — match the approved reference
+========================================================= */
+.about-prestige-wrap{
+  width:min(calc(100% - 32px), 1040px) !important;
+  margin:0 auto !important;
+}
+.about-prestige-card{
+  grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr) !important;
+  width:100% !important;
+  margin:0 auto !important;
+  border-radius:20px !important;
+}
+.about-prestige-copy{
+  padding:46px 40px !important;
+}
+.about-prestige-copy h2{
+  font-size:clamp(46px,5.2vw,70px) !important;
+  line-height:1 !important;
+  letter-spacing:-.055em !important;
+  font-weight:700 !important;
+  margin:0 0 26px !important;
+  color:#f4f6fb !important;
+  white-space:nowrap !important;
+}
+.about-prestige-copy h2 em{
+  font-family:"Space Grotesk",sans-serif !important;
+  font-weight:700 !important;
+  font-style:normal !important;
+  color:#6678ff !important;
+  letter-spacing:-.055em !important;
+}
+.about-prestige-visual{
+  min-height:540px !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.about-prestige-photo-glow{
+  width:370px !important;
+  height:370px !important;
+  background:radial-gradient(circle,rgba(74,105,255,.23) 0%,rgba(58,87,188,.11) 42%,transparent 70%) !important;
+  filter:blur(10px) !important;
+}
+.about-prestige-photo{
+  width:min(330px,70%) !important;
+  aspect-ratio:1/1 !important;
+  border-radius:50% !important;
+  border:1px solid rgba(83,121,255,.82) !important;
+  box-shadow:0 0 0 16px rgba(71,102,215,.13),0 0 55px rgba(58,92,255,.24),0 25px 65px rgba(0,0,0,.38) !important;
+}
+.about-prestige-signature{
+  display:none !important;
+}
+
+/* =========================================================
+   SKILLS — center every real technology icon in its card
+========================================================= */
+#skills .wrap{
+  width:min(calc(100% - 32px),1040px) !important;
+  margin:0 auto !important;
+}
+#skills .tools{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  gap:10px !important;
+  justify-items:stretch !important;
+}
+#skills .tool{
+  min-height:74px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  padding:12px 10px !important;
+  box-sizing:border-box !important;
+}
+#skills .tool > div{
+  width:34px !important;
+  height:34px !important;
+  margin:0 auto 6px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+#skills .tool > div img,
+#skills .tool img.real-tool-icon{
+  width:25px !important;
+  height:25px !important;
+  margin:0 auto !important;
+  object-fit:contain !important;
+}
+#skills .tool .txt{
+  font-size:13px !important;
+  line-height:1 !important;
+}
+@media(max-width:900px){
+  #skills .tools{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+  .about-prestige-card{grid-template-columns:minmax(0,1fr) minmax(300px,.9fr) !important;}
+}
+@media(max-width:700px){
+  .about-prestige-wrap{width:min(calc(100% - 20px),600px) !important;}
+  .about-prestige-card{grid-template-columns:1fr !important;}
+  .about-prestige-copy{padding:34px 24px 38px !important;}
+  .about-prestige-copy h2{
+    white-space:normal !important;
+    font-size:clamp(40px,11vw,58px) !important;
+  }
+  .about-prestige-visual{min-height:350px !important;}
+  .about-prestige-photo{width:min(260px,65vw) !important;}
+  #skills .tools{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+}
+</style>
+
+
+<style id="ian-light-readability-and-icon-only">
+/* TECH I USE: icon-only, no cards or labels */
+.about-tech-list{
+  display:flex !important;
+  align-items:center !important;
+  flex-wrap:wrap !important;
+  gap:18px !important;
+}
+.about-tech-icon{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:30px !important;
+  height:30px !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.about-tech-icon img{
+  width:24px !important;
+  height:24px !important;
+  display:block !important;
+  object-fit:contain !important;
+  filter:none !important;
+  opacity:1 !important;
+}
+.about-tech-icon:hover{transform:translateY(-2px);}
+
+/* Light mode: stronger text contrast throughout the site. */
+html.light-mode body{color:#172033 !important;}
+html.light-mode nav .links a{color:#46536a !important;}
+html.light-mode nav .links a:hover,
+html.light-mode nav .links a.on{color:#111827 !important;}
+html.light-mode .sub,
+html.light-mode section p{color:#46536a !important;}
+html.light-mode .about-prestige-intro,
+html.light-mode .about-prestige-body{color:#46536a !important;}
+html.light-mode .about-prestige-meta b{color:#172033 !important;}
+html.light-mode .about-prestige-meta small{color:#526078 !important;}
+html.light-mode .about-prestige-kicker,
+html.light-mode .about-tech-label{color:#4664b7 !important;}
+html.light-mode .about-tech-icon img{opacity:1 !important;}
+html.light-mode .tool{
+  color:#172033 !important;
+  background:#ffffff !important;
+  border-color:rgba(25,48,85,.20) !important;
+  box-shadow:0 8px 24px rgba(25,48,85,.08) !important;
+}
+html.light-mode .tool:hover{
+  color:#111827 !important;
+  border-color:rgba(67,91,218,.45) !important;
+  background:#ffffff !important;
+}
+html.light-mode #skills h2{color:#111827 !important;}
+html.light-mode #skills .sub{color:#46536a !important;}
+html.light-mode .ian-menu-theme{color:#26344d !important;}
+html.light-mode .ian-menu-label{color:#65748b !important;}
+html.light-mode .ian-menu-link{color:#26344d !important;}
+html.light-mode footer{color:#526078 !important;}
+html.light-mode #contact .contact-status,
+html.light-mode #contact .contact-intro .sub,
+html.light-mode #contact .form-heading span,
+html.light-mode #contact .form-group label{color:#526078 !important;}
+
+@media(max-width:700px){
+  .about-tech-list{gap:14px !important;}
+  .about-tech-icon{width:28px !important;height:28px !important;}
+  .about-tech-icon img{width:22px !important;height:22px !important;}
+}
+</style>
+
+
+<style id="ian-final-readability-footer-about">
+/* =========================================================
+   FINAL POLISH
+   - TECH I USE: icon-only, all icons visible
+   - Light mode: stronger readable typography everywhere
+   - About: slightly larger body/meta text
+   - Footer: normal document flow, never sticky/fixed
+========================================================= */
+
+/* Keep footer in normal document flow; only the navbar stays sticky. */
+footer,
+html.light-mode footer {
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* About text — slightly larger and easier to read. */
+.about-prestige-intro,
+.about-prestige-body {
+  font-size: 15.5px !important;
+  line-height: 1.82 !important;
+}
+
+.about-prestige-quote p {
+  font-size: 18px !important;
+  line-height: 1.55 !important;
+}
+
+.about-prestige-meta b {
+  font-size: 12px !important;
+}
+
+.about-prestige-meta small {
+  font-size: 10px !important;
+  line-height: 1.55 !important;
+}
+
+/* Light mode: strong, consistent text contrast. */
+html.light-mode body,
+html.light-mode main,
+html.light-mode section {
+  color: #172033 !important;
+}
+
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode h4,
+html.light-mode h5,
+html.light-mode h6 {
+  color: #172033 !important;
+}
+
+html.light-mode p,
+html.light-mode li,
+html.light-mode .sub,
+html.light-mode section p {
+  color: #34435b !important;
+}
+
+html.light-mode nav .links a {
+  color: #33425a !important;
+}
+
+html.light-mode nav .links a:hover,
+html.light-mode nav .links a.on {
+  color: #111827 !important;
+}
+
+html.light-mode .about-prestige-intro,
+html.light-mode .about-prestige-body {
+  color: #34435b !important;
+}
+
+html.light-mode .about-prestige-quote p {
+  color: #26344d !important;
+}
+
+html.light-mode .about-prestige-meta b {
+  color: #172033 !important;
+}
+
+html.light-mode .about-prestige-meta small {
+  color: #52617a !important;
+}
+
+html.light-mode #skills .sub {
+  color: #34435b !important;
+}
+
+html.light-mode #skills .tool {
+  color: #172033 !important;
+}
+
+html.light-mode #skills .tool .txt {
+  color: #172033 !important;
+}
+
+html.light-mode #projects .sub,
+html.light-mode #hobbies .sub,
+html.light-mode #contact .sub {
+  color: #34435b !important;
+}
+
+html.light-mode footer {
+  color: #46546b !important;
+}
+
+/* TECH I USE: no cards, no labels, just clean logos. */
+.about-tech-list {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 18px !important;
+}
+
+.about-tech-icon {
+  width: 30px !important;
+  height: 30px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.about-tech-icon img {
+  width: 24px !important;
+  height: 24px !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+/* Keep the technology logos visible in both themes. */
+html.light-mode .about-tech-icon img {
+  opacity: 1 !important;
+}
+
+/* Mobile About typography */
+@media (max-width:700px) {
+  .about-prestige-intro,
+  .about-prestige-body {
+    font-size: 14.5px !important;
+    line-height: 1.78 !important;
+  }
+
+  .about-prestige-quote p {
+    font-size: 16px !important;
+  }
+
+  .about-prestige-meta b {
+    font-size: 11px !important;
+  }
+
+  .about-prestige-meta small {
+    font-size: 9.5px !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
+
+
+<!-- =========================================================
+     IAN ARGAO BOOT INTRO
+========================================================= -->
+<div id="ian-boot-intro" aria-hidden="true">
+  <div class="ian-boot-wrap">
+    <div class="ian-boot-corner a"></div>
+    <div class="ian-boot-corner b"></div>
+    <div class="ian-boot-corner c"></div>
+    <div class="ian-boot-corner d"></div>
+
+    <div class="ian-boot-status">INITIALIZING PORTFOLIO...</div>
+
+    <div class="ian-boot-name">
+      <svg viewBox="0 0 1100 190" role="img" aria-label="Ian Argao">
+        <defs>
+          <clipPath id="ian-text-clip">
+            <text x="550" y="96" class="ian-text">IANARGAO</text>
+          </clipPath>
+        </defs>
+
+        <!-- Fine line texture moving inside the letters -->
+        <g clip-path="url(#ian-text-clip)">
+          <g class="ian-boot-hatch">
+            <line x1="120" y1="-40" x2="720" y2="180"/>
+            <line x1="80" y1="-20" x2="680" y2="200"/>
+            <line x1="40" y1="0" x2="640" y2="220"/>
+            <line x1="0" y1="20" x2="600" y2="240"/>
+            <line x1="-40" y1="40" x2="560" y2="260"/>
+            <line x1="-80" y1="60" x2="520" y2="280"/>
+            <line x1="-120" y1="80" x2="480" y2="300"/>
+            <line x1="380" y1="-40" x2="980" y2="180"/>
+            <line x1="340" y1="-20" x2="940" y2="200"/>
+            <line x1="300" y1="0" x2="900" y2="220"/>
+            <line x1="260" y1="20" x2="860" y2="240"/>
+            <line x1="220" y1="40" x2="820" y2="260"/>
+            <line x1="180" y1="60" x2="780" y2="280"/>
+            <line x1="140" y1="80" x2="740" y2="300"/>
+            <line x1="100" y1="100" x2="700" y2="320"/>
+            <line x1="520" y1="-40" x2="1120" y2="180"/>
+            <line x1="480" y1="-20" x2="1080" y2="200"/>
+            <line x1="440" y1="0" x2="1040" y2="220"/>
+            <line x1="400" y1="20" x2="1000" y2="240"/>
+            <line x1="360" y1="40" x2="960" y2="260"/>
+            <line x1="320" y1="60" x2="920" y2="280"/>
+            <line x1="280" y1="80" x2="880" y2="300"/>
+            <line x1="240" y1="100" x2="840" y2="320"/>
+          </g>
+          <g class="ian-boot-hatch-fine">
+            <line x1="-100" y1="-30" x2="700" y2="170"/>
+            <line x1="-100" y1="10" x2="700" y2="210"/>
+            <line x1="-100" y1="50" x2="700" y2="250"/>
+            <line x1="400" y1="-30" x2="1200" y2="170"/>
+            <line x1="400" y1="10" x2="1200" y2="210"/>
+            <line x1="400" y1="50" x2="1200" y2="250"/>
+          </g>
+        </g>
+
+        <!-- Technical contours around each letter -->
+        <text x="550" y="96" class="ian-text ian-boot-outline">IANARGAO</text>
+        <text x="550" y="96" class="ian-text ian-boot-outline2">IANARGAO</text>
+        <text x="550" y="96" class="ian-text ian-boot-fillline" fill="none">IANARGAO</text>
+      </svg>
+      <div class="ian-boot-scan"></div>
+    </div>
+
+    <div class="ian-boot-foot">
+      <span class="ian-boot-dot"></span>
+      <span>IAN ARGAO / SYSTEM READY</span>
+      <span>2026</span>
+    </div>
+  </div>
+</div>
 
 <!-- =========================================================
      NAVIGATION
@@ -705,7 +2152,7 @@
 <nav>
   <div class="wrap">
 
-    <a class="logo" href="#home">
+    <a class="logo" href="index.html#home" aria-label="Back to Ian Argao portfolio home">
       IAN<span>/</span>ARGAO
     </a>
 
@@ -723,6 +2170,65 @@
 
   </div>
 </nav>
+
+<!-- =========================================================
+     BURGER MENU
+========================================================= -->
+<div class="ian-menu-backdrop" id="ian-menu-backdrop" aria-hidden="true">
+  <div class="ian-menu-panel" role="menu" aria-label="Portfolio menu">
+    <div class="ian-menu-label">Navigation</div>
+
+    <a class="ian-menu-link" href="index.html#home" role="menuitem">
+      <i class="ti ti-home-2"></i>
+      <span>Home / Portfolio</span>
+    </a>
+    <a class="ian-menu-link" href="index.html#about" role="menuitem">
+      <i class="ti ti-user"></i>
+      <span>About</span>
+    </a>
+    <a class="ian-menu-link" href="index.html#projects" role="menuitem">
+      <i class="ti ti-folder"></i>
+      <span>Projects</span>
+    </a>
+    <a class="ian-menu-link" href="index.html#skills" role="menuitem">
+      <i class="ti ti-code"></i>
+      <span>Skills</span>
+    </a>
+    <a class="ian-menu-link" href="index.html#hobbies" id="ian-hobbies-link" role="menuitem">
+      <i class="ti ti-heart"></i>
+      <span>Hobbies</span>
+    </a>
+
+    <a class="ian-menu-link" href="index.html#contact" role="menuitem">
+      <i class="ti ti-mail"></i>
+      <span>Contact</span>
+    </a>
+    <a class="ian-menu-link" href="index.html#vlog" role="menuitem">
+      <i class="ti ti-player-play"></i>
+      <span>Blog</span>
+    </a>
+
+    <div class="ian-menu-divider"></div>
+
+    <button class="ian-menu-theme" id="ian-theme-toggle" type="button" aria-pressed="false">
+      <i class="ti ti-sun" id="ian-theme-icon"></i>
+      <span id="ian-theme-label">Light Mode</span>
+      <span class="ian-theme-switch" aria-hidden="true"><span></span></span>
+    </button>
+
+    <div class="ian-menu-divider"></div>
+
+    <a class="ian-menu-link back" href="#" id="ian-back-button" role="menuitem">
+      <i class="ti ti-arrow-left"></i>
+      <span>Back to previous page</span>
+    </a>
+
+    <a class="ian-menu-link intro" href="#" id="ian-intro-button" role="menuitem">
+      <i class="ti ti-player-skip-back"></i>
+      <span>Back to IANARGAO Intro</span>
+    </a>
+  </div>
+</div>
 
 
 <!-- =========================================================
@@ -804,71 +2310,66 @@
      ABOUT
 ========================================================= -->
 <div id="about">
-  <section class="about-exact-section">
-    <div class="wrap">
-      <div class="about-exact">
+  <section class="about-prestige-section" aria-label="About me">
+    <div class="about-prestige-wrap">
+      <div class="about-prestige-card">
+        <div class="about-prestige-copy">
+          <div class="about-prestige-kicker">ABOUT ME</div>
+          <h2>Hi, I'm <em>Ian Argao</em></h2>
 
-        <div class="about-exact-profile">
-          <div class="about-corner corner-a"></div>
-          <div class="about-corner corner-b"></div>
-          <div class="about-photo-frame">
-            <img src="images/ian.jpg" alt="Ian Argao">
-            <div class="about-signature">Ian</div>
-          </div>
-          <div class="about-profile-bottom">
-            <div>
-              <strong>BSCS Student</strong>
-              <span>Holy Cross College of Sta. Rosa</span>
-            </div>
-            <div class="about-mini-line"><span></span></div>
-          </div>
-        </div>
-
-        <div class="about-exact-content">
-          <div class="about-eyebrow"><span>ABOUT ME</span><i></i></div>
-          <h2>Hi, I'm <b>Ian Argao</b></h2>
-
-          <p class="about-lead">
-            I'm John Michael F. Argao, but my friends call me JM or Argao.
-            My crush, however, calls me Ian—yiee! I'm currently a BSCS student
-            at Holy Cross College of Sta. Rosa, Nueva Ecija.
+          <p class="about-prestige-intro">
+            I'm John Michael F. Argao, a BSCS student at Holy Cross College
+            of Sta. Rosa, Nueva Ecija. I enjoy building practical web systems
+            and exploring how technology can turn ideas into useful solutions.
           </p>
 
-          <p class="about-lead">
+          <div class="about-prestige-quote">
+            <span class="about-prestige-quote-mark">“</span>
+            <p>Failure is not the end — it's simply part of success.</p>
+          </div>
+
+          <p class="about-prestige-body">
             I chose this program because technology is everywhere, and I believe
             it gives us the power to turn ideas into reality. Every project, bug,
             and late-night code session teaches me something new.
           </p>
 
-          <div class="about-exact-quote">
-            <span class="quote-mark">“</span>
-            <strong>“Failure is not the end — it's simply part of success.”</strong>
+          <div class="about-prestige-meta">
+            <span><b>BSCS Student</b><small>Holy Cross College of Sta. Rosa</small></span>
+            <span><b>Cabanatuan City</b><small>Nueva Ecija, Philippines</small></span>
           </div>
 
-          <div class="about-info-grid">
-            <div class="about-info-card">
-              <div class="about-info-title"><i class="ti ti-user"></i><span>BASIC INFO</span></div>
-              <div class="about-info-row"><i class="ti ti-user"></i><span>Name</span><b>John Michael F. Argao</b></div>
-              <div class="about-info-row"><i class="ti ti-id"></i><span>Nickname</span><b>JM / Argao (Ian - crush)</b></div>
-              <div class="about-info-row"><i class="ti ti-map-pin"></i><span>Location</span><b>M.S. Garcia, Cabanatuan City</b></div>
-              <div class="about-info-row"><i class="ti ti-school"></i><span>Course</span><b>BSCS (Holy Cross College)</b></div>
-            </div>
-
-            <div class="about-info-card">
-              <div class="about-info-title"><i class="ti ti-target-arrow"></i><span>CURRENT FOCUS</span></div>
-              <div class="about-focus-row"><i class="ti ti-school"></i><span>Graduate with a BSCS degree</span></div>
-              <div class="about-focus-row"><i class="ti ti-code"></i><span>Build real-world projects</span></div>
-              <div class="about-focus-row"><i class="ti ti-brain"></i><span>Improve my coding &amp; problem-solving</span></div>
-              <div class="about-focus-row"><i class="ti ti-star"></i><span>Create a better future for myself</span></div>
+          <div class="about-tech-use">
+            <div class="about-tech-label">TECH I USE</div>
+            <div class="about-tech-list">
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/html5" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/css" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/javascript" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/python" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/flask" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/mysql" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/git" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/github" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/figma" alt=""></span>
+              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/openai/111827" alt=""></span>
             </div>
           </div>
+
+
         </div>
 
+        <div class="about-prestige-visual">
+          <div class="about-prestige-photo-glow"></div>
+          <div class="about-prestige-photo">
+            <img src="images/ian.jpg" alt="Ian Argao">
+          </div>
+          <div class="about-prestige-signature">Ian</div>
+        </div>
       </div>
     </div>
   </section>
 </div>
-
 
 <!-- =========================================================
      SKILLS / TOOLS
@@ -909,9 +2410,11 @@
           href="language.html#sql"
         >
           <div>
-            <span class="txt">
-              SQL
-            </span>
+            <img
+              src="https://cdn.simpleicons.org/mysql"
+              alt="MySQL"
+              class="real-tool-icon"
+            >
           </div>
           SQL
         </a>
@@ -1431,11 +2934,11 @@
     <div class="wrap">
 
       <h2>
-        Hobbies
+        Beyond Code
       </h2>
 
       <p class="sub">
-        Outside of class and code.
+        A few things I enjoy outside of programming.
       </p>
 
 
@@ -1445,29 +2948,6 @@
         <!-- =================================================
              CODING
         ================================================== -->
-
-        <a class="card rv hobby-card" href="hobby.html#coding">
-
-          <img
-            class="hobby-img"
-            src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=85"
-            alt="Coding and programming"
-            loading="lazy"
-          >
-
-          <div class="hobby-content">
-
-            <h3>
-              Coding
-            </h3>
-
-            <p>
-              Building small apps just for fun.
-            </p>
-
-          </div>
-
-        </a>
 
 
         <!-- =================================================
@@ -1558,29 +3038,6 @@
              MUSIC
         ================================================== -->
 
-        <a class="card rv hobby-card" href="hobby.html#music">
-
-          <img
-            class="hobby-img"
-            src="data:image/jpeg;base64,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"
-            alt="Spotify playlist with AirPods"
-            loading="lazy"
-          >
-
-          <div class="hobby-content">
-
-            <h3>
-              Music
-            </h3>
-
-            <p>
-              I enjoy listening to music, especially when I'm relaxing, studying, or coding.
-            </p>
-
-          </div>
-
-        </a>
-
 
         <!-- =================================================
              RUBIK'S CUBE
@@ -1668,6 +3125,11 @@
           </p>
 
           <div class="contact-line"></div>
+
+          <div class="contact-status">
+            <span><i class="ti ti-point-filled"></i> Open to collaborations</span>
+            <span><i class="ti ti-circle-check-filled"></i> Usually replies within 1–2 days</span>
+          </div>
 
           <div class="social">
             <a href="https://www.google.com/search?q=gmail" target="_blank" rel="noopener noreferrer" aria-label="Gmail"><i class="ti ti-brand-gmail"></i></a>
@@ -1862,11 +3324,347 @@ document.addEventListener(
 </script>
 
 
+
+<script id="ian-boot-controller">
+(function(){
+  const boot = document.getElementById('ian-boot-intro');
+  if(!boot) return;
+
+  let timer = null;
+  let removeTimer = null;
+
+  function hideIntro(){
+    boot.classList.add('is-done');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    if(removeTimer) clearTimeout(removeTimer);
+    removeTimer = window.setTimeout(function(){
+      boot.style.visibility = 'hidden';
+    }, 850);
+  }
+
+  function showIntro(){
+    if(timer) clearTimeout(timer);
+    if(removeTimer) clearTimeout(removeTimer);
+    boot.style.visibility = 'visible';
+    boot.classList.remove('is-done');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    // Restart the moving line animations from the beginning.
+    boot.querySelectorAll('.ian-boot-outline,.ian-boot-outline2,.ian-boot-fillline,.ian-boot-hatch,.ian-boot-hatch-fine,.ian-boot-scan').forEach(function(el){
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = '';
+    });
+
+    timer = window.setTimeout(hideIntro, 4200);
+  }
+
+  window.ianShowIntro = showIntro;
+  showIntro();
+})();
+</script>
+
+
+<script id="ian-nav-menu-script">
+(function(){
+  const burger = document.querySelector('.burger');
+  const menu = document.getElementById('ian-menu-backdrop');
+  const back = document.getElementById('ian-back-button');
+  const intro = document.getElementById('ian-intro-button');
+  const logo = document.querySelector('nav .logo');
+  if(!burger || !menu) return;
+
+  const setMenu = (open) => {
+    burger.classList.toggle('active', open);
+    menu.classList.toggle('open', open);
+    menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    const icon = burger.querySelector('i');
+    if(icon) icon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  };
+
+  burger.setAttribute('aria-expanded','false');
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMenu(!menu.classList.contains('open'));
+  });
+
+  menu.addEventListener('click', (e) => {
+    if(e.target === menu) setMenu(false);
+    const link = e.target.closest('.ian-menu-link');
+    if(link && link !== back) setMenu(false);
+  });
+
+  if(back){
+    back.addEventListener('click', (e) => {
+      e.preventDefault();
+      if(history.length > 1) history.back();
+      else window.location.href = 'index.html#home';
+      setMenu(false);
+    });
+  }
+
+  if(intro){
+    intro.addEventListener('click', (e) => {
+      e.preventDefault();
+      setMenu(false);
+      window.scrollTo({top:0, behavior:'instant'});
+      if(typeof window.ianShowIntro === 'function') window.ianShowIntro();
+    });
+  }
+
+  /* Clicking IAN/ARGAO always takes the visitor back to the portfolio home. */
+  if(logo){
+    logo.addEventListener('click', () => {
+      setMenu(false);
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') setMenu(false);
+  });
+})();
+</script>
+
 <!-- =========================================================
      MAIN JAVASCRIPT
 ========================================================= -->
 
 <script src="script.js"></script>
 
+
+<script id="profile-photo-flip-script">
+(function(){
+  const photo = document.querySelector('.hero .photo');
+  if(!photo) return;
+
+  let timer;
+  const triggerFlip = () => {
+    clearTimeout(timer);
+    photo.classList.remove('flip-effect');
+    void photo.offsetWidth;
+    photo.classList.add('flip-effect');
+    timer = setTimeout(() => photo.classList.remove('flip-effect'), 950);
+  };
+
+  const observer = new MutationObserver((mutations) => {
+    if(mutations.some(m => m.type === 'attributes' && m.attributeName === 'class')) {
+      triggerFlip();
+    }
+  });
+
+  photo.querySelectorAll('img').forEach(img => {
+    observer.observe(img, {attributes:true, attributeFilter:['class']});
+  });
+})();
+</script>
+
+
+<script id="ian-final-theme-and-hobbies-script">
+(function(){
+  const root = document.documentElement;
+  const body = document.body;
+  const themeButton = document.getElementById('ian-theme-toggle');
+  const themeLabel = document.getElementById('ian-theme-label');
+  const themeIcon = document.getElementById('ian-theme-icon');
+  const hobbiesLink = document.getElementById('ian-hobbies-link');
+
+  function applyTheme(mode){
+    const light = mode === 'light';
+    root.classList.toggle('light-mode', light);
+    if(themeButton){
+      themeButton.setAttribute('aria-pressed', light ? 'true' : 'false');
+      themeButton.classList.toggle('is-light', light);
+    }
+    if(themeLabel) themeLabel.textContent = light ? 'Dark Mode' : 'Light Mode';
+    if(themeIcon) themeIcon.className = light ? 'ti ti-moon' : 'ti ti-sun';
+  }
+
+  let savedTheme = 'dark';
+  try { savedTheme = localStorage.getItem('ian-theme') || 'dark'; } catch(e){}
+  applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+
+  if(themeButton){
+    themeButton.addEventListener('click', function(){
+      const next = root.classList.contains('light-mode') ? 'dark' : 'light';
+      applyTheme(next);
+      try { localStorage.setItem('ian-theme', next); } catch(e){}
+    });
+  }
+
+  function openHobbies(){
+    body.classList.add('ian-hobbies-open');
+    const target = document.getElementById('hobbies');
+    if(target){
+      window.setTimeout(function(){
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+      }, 80);
+    }
+  }
+
+  if(hobbiesLink){
+    hobbiesLink.addEventListener('click', function(e){
+      e.preventDefault();
+      openHobbies();
+      const menu = document.getElementById('ian-menu-backdrop');
+      if(menu){
+        menu.classList.remove('open');
+        menu.setAttribute('aria-hidden','true');
+      }
+      const burger = document.querySelector('.burger');
+      if(burger){
+        burger.classList.remove('active');
+        burger.setAttribute('aria-expanded','false');
+        const icon = burger.querySelector('i');
+        if(icon) icon.className='ti ti-menu-2';
+      }
+      history.replaceState(null,'','#hobbies');
+    });
+  }
+
+  if(location.hash === '#hobbies') openHobbies();
+})();
+</script>
+
 </body>
 </html>
+<style id="about-warm-white-final">
+/* =========================================================
+   ABOUT — WARM WHITE / AMBER PROFILE GLOW
+   Replaces the remaining blue About accents with white + warm gold.
+========================================================= */
+.about-exact-section {
+  background:
+    radial-gradient(circle at 26% 48%, rgba(214,170,90,.055), transparent 34%),
+    radial-gradient(circle at 78% 55%, rgba(255,205,120,.035), transparent 36%) !important;
+}
+
+.about-exact-section::before,
+.about-exact-section::after {
+  border-color: rgba(255,255,255,.075) !important;
+}
+.about-exact-section::after {
+  border-color: rgba(214,170,90,.075) !important;
+}
+
+.about-exact {
+  border-color: rgba(255,255,255,.16) !important;
+  background: linear-gradient(145deg, rgba(17,17,17,.96), rgba(7,7,7,.98) 55%, rgba(16,13,9,.96)) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.025) inset,
+    0 25px 80px rgba(0,0,0,.55),
+    0 0 45px rgba(205,160,78,.045) !important;
+}
+
+.about-exact::before {
+  background: linear-gradient(90deg, rgba(255,255,255,.72), rgba(214,170,90,.34)) !important;
+  box-shadow: 0 0 14px rgba(214,170,90,.18) !important;
+}
+
+.about-photo-frame {
+  border-color: rgba(255,255,255,.26) !important;
+  background: rgba(12,12,12,.96) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.04) inset,
+    0 0 28px rgba(213,169,88,.20),
+    0 0 70px rgba(213,169,88,.075) !important;
+}
+
+.about-photo-frame::before {
+  box-shadow:
+    inset 0 0 24px rgba(255,255,255,.045),
+    0 0 34px rgba(214,170,90,.16) !important;
+}
+
+.about-signature {
+  color: #f1eadc !important;
+  text-shadow: 0 0 12px rgba(214,170,90,.28) !important;
+}
+
+.about-corner {
+  border-top-color: rgba(255,255,255,.48) !important;
+  filter: drop-shadow(0 0 5px rgba(214,170,90,.18)) !important;
+}
+.about-corner::after {
+  background: rgba(255,255,255,.48) !important;
+  box-shadow: 0 0 6px rgba(214,170,90,.20) !important;
+}
+
+.about-profile-bottom strong {
+  color: #eee9df !important;
+}
+.about-profile-bottom span {
+  color: #a8a298 !important;
+}
+.about-mini-line span {
+  background: linear-gradient(90deg, #f2eee7 0 62%, #8c8270 62%) !important;
+  box-shadow: 0 0 9px rgba(214,170,90,.16) !important;
+}
+
+.about-eyebrow {
+  color: #eee9df !important;
+}
+.about-eyebrow i {
+  background: linear-gradient(90deg, rgba(255,255,255,.52), rgba(255,255,255,.10)) !important;
+}
+
+.about-exact-content h2 {
+  color: #f4f1eb !important;
+}
+.about-exact-content h2 b {
+  background: linear-gradient(90deg, #ffffff, #d8d2c8, #9e978e) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.about-lead {
+  color: #c9c4bb !important;
+}
+
+.about-exact-quote {
+  border-color: rgba(255,255,255,.22) !important;
+  background: linear-gradient(100deg, rgba(35,32,27,.66), rgba(20,19,18,.76)) !important;
+  box-shadow:
+    0 0 22px rgba(214,170,90,.055),
+    inset 0 0 18px rgba(255,255,255,.025) !important;
+}
+.quote-mark {
+  color: #ddd6ca !important;
+}
+.about-exact-quote strong {
+  color: #eee9df !important;
+}
+
+.about-info-card {
+  border-color: rgba(255,255,255,.15) !important;
+  background: linear-gradient(145deg, rgba(22,22,21,.78), rgba(10,10,10,.86)) !important;
+}
+.about-info-title {
+  color: #e9e5dc !important;
+}
+.about-info-title i,
+.about-info-row > i,
+.about-focus-row > i {
+  color: #d8d0c3 !important;
+  filter: drop-shadow(0 0 5px rgba(214,170,90,.12)) !important;
+}
+
+.about-info-row,
+.about-focus-row {
+  border: 1px solid rgba(255,255,255,.095) !important;
+  background: linear-gradient(90deg, rgba(39,37,34,.66), rgba(22,22,21,.58)) !important;
+  color: #e0dbd2 !important;
+}
+.about-info-row span {
+  color: #d0cbc2 !important;
+}
+.about-info-row b {
+  color: #aaa49b !important;
+}
+.about-focus-row > i {
+  color: #d0c7b9 !important;
+}
+</style>
