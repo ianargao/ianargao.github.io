@@ -2067,6 +2067,79 @@ html.light-mode .about-tech-icon img {
 }
 </style>
 
+<style id="unfinished-project-styles">
+/* Blank project cards */
+#projects a.card.proj {
+    position: relative !important;
+    display: block !important;
+    aspect-ratio: 1 / 1 !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    background: #0b0b0b !important;
+    border: 1px solid #333 !important;
+    border-radius: 18px !important;
+    text-decoration: none !important;
+    transition: border-color .25s ease,
+                transform .25s ease !important;
+}
+
+/* Remove project images */
+#projects a.card.proj .project-img {
+    display: none !important;
+}
+
+/* Remove all titles, descriptions, icons and tools */
+#projects a.card.proj .pc {
+    display: none !important;
+}
+
+/* Remove image overlays */
+#projects a.card.proj::after {
+    display: none !important;
+}
+
+/* Hover effect */
+#projects a.card.proj:hover {
+    border-color: #777 !important;
+    transform: translateY(-3px) !important;
+}
+</style>
+<style>
+/* Fix spacing and alignment of project placeholders */
+#projects .grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    width: 100% !important;
+    align-items: stretch !important;
+}
+
+#projects .grid > .card.proj {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 0 !important;
+}
+
+/* Tablet and mobile */
+@media (max-width: 800px) {
+    #projects .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    #projects .grid {
+        gap: 10px !important;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -2340,243 +2413,95 @@ html.light-mode .about-tech-icon img {
           </div>
 
           <div class="about-tech-use">
-            <div class="about-tech-label">TECH I USE</div>
-            <div class="about-tech-list">
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/html5" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/css" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/javascript" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/python" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/flask" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/mysql" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/git" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/github" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/figma" alt=""></span>
-              <span class="about-tech-icon"><img src="https://cdn.simpleicons.org/openai/111827" alt=""></span>
+          <div class="about-tech-label">TECH I USE</div>
+
+          
+
+          <div class="about-tech-list">
+            <span class="about-tech-icon" data-tooltip="HTML5">
+              <img src="https://cdn.simpleicons.org/html5" alt="HTML5">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="CSS">
+              <img src="https://cdn.simpleicons.org/css" alt="CSS">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="JavaScript">
+              <img src="https://cdn.simpleicons.org/javascript" alt="JavaScript">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="Python">
+              <img src="https://cdn.simpleicons.org/python" alt="Python">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="Flask">
+              <img src="https://cdn.simpleicons.org/flask" alt="Flask">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="MySQL">
+              <img src="https://cdn.simpleicons.org/mysql" alt="MySQL">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="Git">
+              <img src="https://cdn.simpleicons.org/git" alt="Git">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="GitHub">
+              <img src="https://cdn.simpleicons.org/github" alt="GitHub">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="Visual Studio Code">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Visual Studio Code">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="Figma">
+              <img src="https://cdn.simpleicons.org/figma" alt="Figma">
+            </span>
+
+            
+ 
+
+            <span class="about-tech-icon" data-tooltip="C++">
+              <img src="https://cdn.simpleicons.org/cplusplus" alt="C++">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="Java">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                alt="Java logo"
+              >
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="Tailwind CSS">
+              <img src="https://cdn.simpleicons.org/tailwindcss" alt="Tailwind CSS">
+            </span>
+
+            <span class="about-tech-icon" data-tooltip="Ubuntu Linux (WSL)">
+              <img src="https://cdn.simpleicons.org/ubuntu/E95420" alt="Ubuntu Linux">
+            </span>
+          </div>
+        </div>
+
+
+                </div>
+
+                <div class="about-prestige-visual">
+                  <div class="about-prestige-photo-glow"></div>
+                  <div class="about-prestige-photo">
+                    <img src="images/ian.jpg" alt="Ian Argao">
+                  </div>
+                  <div class="about-prestige-signature">Ian</div>
+                </div>
+              </div>
             </div>
-          </div>
-
-
+          </section>
         </div>
-
-        <div class="about-prestige-visual">
-          <div class="about-prestige-photo-glow"></div>
-          <div class="about-prestige-photo">
-            <img src="images/ian.jpg" alt="Ian Argao">
-          </div>
-          <div class="about-prestige-signature">Ian</div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
 
 <!-- =========================================================
      SKILLS / TOOLS
 ========================================================= -->
 
-  <section id="skills">
-
-    <div class="wrap">
-
-      <h2 class="rv">
-        Tools I can use
-      </h2>
-
-      <p class="sub rv">
-        Languages and tools I work with. Click one to see how to run Hello, World!
-      </p>
-
-
-      <div class="tools">
-
-        <a
-          class="tool rv"
-          href="language.html#flask"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
-              alt="Flask"
-              class="inv"
-            >
-          </div>
-          Flask
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#sql"
-        >
-          <div>
-            <img
-              src="https://cdn.simpleicons.org/mysql"
-              alt="MySQL"
-              class="real-tool-icon"
-            >
-          </div>
-          SQL
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#html"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-              alt="HTML"
-            >
-          </div>
-          HTML
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#css"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-              alt="CSS"
-            >
-          </div>
-          CSS
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#javascript"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-              alt="JavaScript"
-            >
-          </div>
-          JavaScript
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#vscode"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-              alt="VS Code"
-            >
-          </div>
-          VS Code
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#python"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-              alt="Python"
-            >
-          </div>
-          Python
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#git"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-              alt="Git"
-            >
-          </div>
-          Git
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#github"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-              alt="GitHub"
-              class="inv"
-            >
-          </div>
-          GitHub
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#java"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-              alt="Java"
-              class="wh"
-            >
-          </div>
-          Java
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#cpp"
-        >
-          <div>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-              alt="C++"
-              class="wh"
-            >
-          </div>
-          C++
-        </a>
-
-
-        <a
-          class="tool rv"
-          href="language.html#figma"
-        >
-          <div>
-
-            <span class="fig">
-
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-                alt="Figma"
-                class="wh"
-              >
-
-            </span>
-
-          </div>
-
-          Figma
-
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
+  
 </div>
 
 
@@ -2954,7 +2879,9 @@ html.light-mode .about-tech-icon img {
              BASKETBALL
         ================================================== -->
 
-        <a class="card rv hobby-card" href="hobby.html#basketball">
+                <a class="card rv hobby-card"
+          href="hobby.html#basketball"
+          onclick="sessionStorage.setItem('ian-returning-from-example', 'true'); sessionStorage.setItem('ian-hobbies-scroll', String(window.scrollY));">
 
           <img
             class="hobby-img"
@@ -2982,7 +2909,9 @@ html.light-mode .about-tech-icon img {
              ANIME
         ================================================== -->
 
-        <a class="card rv hobby-card" href="hobby.html#anime">
+                <a class="card rv hobby-card"
+          href="hobby.html#anime"
+          onclick="sessionStorage.setItem('ian-returning-from-example', 'true'); sessionStorage.setItem('ian-hobbies-scroll', String(window.scrollY));">
 
           <img
             class="hobby-img"
@@ -3010,7 +2939,9 @@ html.light-mode .about-tech-icon img {
              CREATIVE WEB DESIGN
         ================================================== -->
 
-        <a class="card rv hobby-card" href="hobby.html#webdesign">
+                    <a class="card rv hobby-card"
+            href="hobby.html#webdesign"
+            onclick="sessionStorage.setItem('ian-returning-from-example', 'true'); sessionStorage.setItem('ian-hobbies-scroll', String(window.scrollY));">
 
           <img
             class="hobby-img"
@@ -3043,7 +2974,9 @@ html.light-mode .about-tech-icon img {
              RUBIK'S CUBE
         ================================================== -->
 
-       <a class="card rv hobby-card" href="hobby.html#rubiks">
+       <a class="card rv hobby-card"
+          href="hobby.html#rubiks"
+          onclick="sessionStorage.setItem('ian-returning-from-example', 'true'); sessionStorage.setItem('ian-hobbies-scroll', String(window.scrollY));">
 
   <img
     class="hobby-img"
@@ -3071,7 +3004,9 @@ html.light-mode .about-tech-icon img {
              CHESS
         ================================================== -->
 
-        <a class="card rv hobby-card" href="hobby.html#chess">
+        <a class="card rv hobby-card"
+   href="hobby.html#chess"
+   onclick="sessionStorage.setItem('ian-returning-from-example', 'true'); sessionStorage.setItem('ian-hobbies-scroll', String(window.scrollY));">
 
           <img
             class="hobby-img"
@@ -3362,7 +3297,19 @@ document.addEventListener(
   }
 
   window.ianShowIntro = showIntro;
+
+const returningFromExample =
+  sessionStorage.getItem('ian-returning-from-example') === 'true';
+
+if (returningFromExample) {
+  sessionStorage.removeItem('ian-returning-from-example');
+  boot.classList.add('is-done');
+  boot.style.visibility = 'hidden';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+} else {
   showIntro();
+}
 })();
 </script>
 
@@ -3528,6 +3475,156 @@ document.addEventListener(
 })();
 </script>
 
+<div id="project-unfinished-modal"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="project-modal-title">
+
+    <div class="project-modal-card">
+        <h3 id="project-modal-title">
+            Unfinished Project
+        </h3>
+
+        <button type="button"
+                class="project-modal-close"
+                id="project-modal-close">
+            Close
+        </button>
+    </div>
+</div>
+
+<style>
+#project-unfinished-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .8);
+    backdrop-filter: blur(8px);
+}
+
+#project-unfinished-modal.is-open {
+    display: flex;
+}
+
+#project-unfinished-modal .project-modal-card {
+    width: 100%;
+    max-width: 380px;
+    padding: 30px;
+    text-align: center;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 18px;
+}
+
+#project-unfinished-modal h3 {
+    margin: 0 0 22px;
+    color: #fff;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 24px;
+}
+
+#project-unfinished-modal .project-modal-close {
+    width: 100%;
+    padding: 13px;
+    color: #111;
+    background: #f2f2f2;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+body.project-modal-open {
+    overflow: hidden;
+}
+</style>
+
+<script>
+(function () {
+    const modal = document.getElementById(
+        "project-unfinished-modal"
+    );
+
+    const closeButton = document.getElementById(
+        "project-modal-close"
+    );
+
+    function openModal() {
+        modal.classList.add("is-open");
+        document.body.classList.add("project-modal-open");
+    }
+
+    function closeModal() {
+        modal.classList.remove("is-open");
+        document.body.classList.remove("project-modal-open");
+    }
+
+    document.addEventListener("click", function (event) {
+        const card = event.target.closest(
+            "#projects a.card.proj"
+        );
+
+        if (!card) return;
+
+        event.preventDefault();
+        openModal();
+    }, true);
+
+    closeButton.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closeModal();
+        }
+    });
+})();
+</script>
+<script>
+(() => {
+  const KEY = "portfolio-scroll-position";
+
+  // Save the current position when leaving the portfolio
+  window.addEventListener("pagehide", () => {
+    sessionStorage.setItem(KEY, String(window.scrollY));
+  });
+
+  // Restore the previous position when returning
+  window.addEventListener("pageshow", () => {
+    const savedPosition = sessionStorage.getItem(KEY);
+
+    if (savedPosition !== null) {
+      const position = Number(savedPosition);
+
+      // Wait for the page layout and images to settle
+      requestAnimationFrame(() => {
+        window.scrollTo(0, position);
+      });
+    }
+  });
+})();
+</script>
+<script>
+window.addEventListener('pageshow', function () {
+  const savedScroll = sessionStorage.getItem('ian-hobbies-scroll');
+
+  if (savedScroll !== null) {
+    requestAnimationFrame(function () {
+      window.scrollTo(0, Number(savedScroll));
+      sessionStorage.removeItem('ian-hobbies-scroll');
+    });
+  }
+});
+</script>
 </body>
 </html>
 <style id="about-warm-white-final">
