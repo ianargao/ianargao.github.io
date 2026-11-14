@@ -747,3 +747,9 @@ html.light .pimg{background:var(--img) center/cover no-repeat,linear-gradient(13
     display:none;
   }
 }
+.site-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+}
