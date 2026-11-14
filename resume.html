@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Professional Resume">
+    <meta name="theme-color" content="#17191d">
+
+    <title>Resume | John Michael F. Argao</title>
+
+    <link rel="stylesheet" href="resume.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="bar">
+        
+        <a href="index.html?skipLoader=1" class="back-link">
+            ← Back to Portfolio
+        </a>
+
+
+        <button id="dl" type="button">
+            Download PDF
+        </button>
+    </header>
+
+    <!-- RESUME -->
+    <main class="wrap">
+        <article class="paper" id="paper" aria-label="Resume">
+            <p class="loading">Loading resume...</p>
+        </article>
+    </main>
+
+    <!-- RESUME DATA -->
+    <script src="resume-data.js"></script>
+
+    <!-- PDF LIBRARY LOADER -->
+    <script>
+    (async function () {
+
+        const paper = document.getElementById("paper");
+
+        function loadScript(sources, globalCheck, libraryName) {
+
+            return new Promise((resolve, reject) => {
+
+                let index = 0;
+
+                function tryNext() {
+
+                    if (globalCheck()) {
+                        resolve();
+                        return;
+                    }
+
+                    if (index >= sources.length) {
+                        reject(new Error(
+                            libraryName + " failed to load from all sources."
+                        ));
+                        return;
+                    }
+
+                    const script = document.createElement("script");
+
+                    script.src = sources[index];
+                    script.async = true;
+
+                    script.onload = function () {
+
+                        if (globalCheck()) {
+                            resolve();
+                        } else {
+                            index++;
+                            tryNext();
+                        }
+
+                    };
+
+                    script.onerror = function () {
+                        index++;
+                        tryNext();
+                    };
+
+                    document.head.appendChild(script);
+                }
+
+                tryNext();
+
+            });
+
+        }
+
+        try {
+
+            // HTML2CANVAS
+            await loadScript(
+                [
+                    "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",
+                    "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js",
+                    "https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"
+                ],
+                () => typeof window.html2canvas === "function",
+                "html2canvas"
+            );
+
+            console.log("html2canvas loaded.");
+
+            // JSPDF
+            await loadScript(
+                [
+                    "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js",
+                    "https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js",
+                    "https://unpkg.com/jspdf@2.5.2/dist/jspdf.umd.min.js"
+                ],
+                () => !!(
+                    window.jspdf &&
+                    typeof window.jspdf.jsPDF === "function"
+                ),
+                "jsPDF"
+            );
+
+            console.log("jsPDF loaded.");
+
+            // RESUME RENDERER
+            const resumeScript = document.createElement("script");
+
+            resumeScript.src = "resume.js";
+
+            resumeScript.onerror = function () {
+                paper.innerHTML =
+                    '<p class="loading">Unable to load resume.js. Please check the file.</p>';
+            };
+
+            document.body.appendChild(resumeScript);
+
+        } catch (error) {
+
+            console.error("PDF library loading error:", error);
+
+            paper.innerHTML =
+                '<p class="loading">' +
+                'PDF library loading failed: ' +
+                error.message +
+                '</p>';
+
+            alert(
+                "Unable to load the PDF libraries. Check the browser console for details."
+            );
+
+        }
+
+    })();
+    </script>
+
+    <!-- BACK TO PORTFOLIO -->
+    <script>
+    document.getElementById("backToPortfolio").addEventListener("click", function () {
+
+        sessionStorage.setItem("skipPortfolioLoader", "true");
+
+    });
+    </script>
+
+</body>
+</html>
